@@ -71,6 +71,32 @@ a{color:inherit}
 .fgroup-label:first-child{margin-left:0}
 .chip.reset{margin-left:auto;color:var(--accent);border-color:transparent;font-weight:600}
 
+/* QUICK BAR (sticky search · filter toggle · random) */
+.qbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;margin:14px -18px 0;padding:8px 18px 10px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid transparent;transition:border-color .18s}
+.qbar.stuck{border-bottom-color:var(--card-line)}
+.qbar-row{display:flex;gap:8px;align-items:stretch}
+.qbar .searchbox{flex:1;min-width:0;margin-top:0;padding:9px 13px}
+.qbtn{flex:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--card-line);background:var(--card);color:var(--text);border-radius:12px;padding:0 13px;font-size:13.5px;font-weight:600;min-height:42px;transition:all .16s}
+.qbtn:hover{border-color:var(--accent)}
+.qbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ftoggle .caret{font-size:10px;color:var(--muted);transition:transform .18s}
+.ftoggle[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.ftoggle.has{border-color:var(--accent);color:var(--accent)}
+.fcount:not(:empty){display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:700}
+.dice{font-size:19px;padding:0 12px}
+.dice[disabled]{opacity:.4;cursor:default}
+.dice.roll{animation:diceroll .45s ease}
+@keyframes diceroll{0%{transform:rotate(0)}50%{transform:rotate(-25deg) scale(1.12)}100%{transform:rotate(0)}}
+.qbar .filters{margin-top:10px;max-height:46vh;overflow:auto}
+.qbar .filters[hidden]{display:none}
+.mapwrap{scroll-margin-top:76px}
+.card{scroll-margin-top:90px}
+.pin.flash circle{animation:pinflash .3s ease-in-out 4 alternate;stroke:var(--text);stroke-width:3}
+@keyframes pinflash{from{r:10}to{r:16}}
+.card.picked{animation:cardpick 3.3s ease;border-color:var(--accent)}
+@keyframes cardpick{0%,70%{box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 45%,transparent)}100%{box-shadow:0 0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.pin.flash circle,.card.picked,.dice.roll{animation:none}.pin.flash circle{r:15}}
+
 .mapwrap{position:relative;border:1px solid var(--card-line);border-radius:16px;overflow:hidden;background:var(--map-road);margin-top:16px;box-shadow:0 1px 3px rgba(42,38,32,.04)}
 .mapscroll{overflow:auto;-webkit-overflow-scrolling:touch}
 .mapscroll svg{display:block;width:100%;height:auto}
@@ -365,9 +391,15 @@ function buildSection(s){
  sec.innerHTML=`<div class="secwrap">
    <div class="sechead"><span class="sicon">${s.illo}</span><div><h2 class="stitle">${esc(s.title)}</h2><div class="sconcept">${esc(s.concept)}</div></div></div>
    <div class="scount" id="cnt-${s.key}"></div>
-   <div class="searchbox"><span aria-hidden="true">⌕</span><input type="search" id="q-${s.key}" placeholder="상호·설명 검색"></div>
-   <div class="filters" id="f-${s.key}"></div>
-   <div class="mapwrap"><div class="mapscroll" id="ms-${s.key}"><svg id="map-${s.key}" class="mapsvg" viewBox="0 0 783 654.667"></svg></div>
+   <div class="qbar" id="qb-${s.key}">
+     <div class="qbar-row">
+       <div class="searchbox"><span aria-hidden="true">⌕</span><input type="search" id="q-${s.key}" placeholder="상호·설명 검색"></div>
+       <button class="qbtn ftoggle" id="ft-${s.key}" data-k="${s.key}" aria-expanded="false" aria-controls="f-${s.key}">필터<span class="fcount" id="fc-${s.key}"></span><span class="caret" aria-hidden="true">▾</span></button>
+       <button class="qbtn dice" id="dice-${s.key}" data-k="${s.key}" aria-label="조건 안에서 랜덤 추천" title="조건 안에서 랜덤 추천">🎲</button>
+     </div>
+     <div class="filters" id="f-${s.key}" hidden></div>
+   </div>
+   <div class="mapwrap" id="mw-${s.key}"><div class="mapscroll" id="ms-${s.key}"><svg id="map-${s.key}" class="mapsvg" viewBox="0 0 783 654.667"></svg></div>
      <div class="maphint">핀을 눌러 정보 보기 · + 로 확대</div>
      <div class="mapzoom"><button data-z="in" data-k="${s.key}" aria-label="확대">+</button><button data-z="out" data-k="${s.key}" aria-label="축소">−</button></div></div>
    <div id="cards-${s.key}"></div>`;
@@ -404,6 +436,10 @@ function render(key){
  const vis=new Set(list.map(keyOf));
  $("map-"+key).querySelectorAll(".pin").forEach(g=>g.classList.toggle("dim",!vis.has(g.dataset.key)));
  if(key==="curation"){const _fc=list.filter(p=>p.cat==="food").length,_cc=list.filter(p=>p.cat==="cafe").length;$("cnt-"+key).textContent=`식당 ${_fc}곳 · 카페 ${_cc}곳`;}else{$("cnt-"+key).textContent=list.length+"곳";}
+ const st=state[key], nf=st.cat.size+st.zone.size+st.res.size+st.price.size;
+ $("fc-"+key).textContent=nf?String(nf):""; $("ft-"+key).classList.toggle("has",nf>0);
+ $("ft-"+key).setAttribute("aria-label",nf?`필터 ${nf}개 적용 중`:"필터");
+ $("dice-"+key).disabled=list.length===0;
  const box=$("cards-"+key);
  if(key==="curation"){
   const f=list.filter(p=>p.cat==="food"),c=list.filter(p=>p.cat==="cafe");
@@ -422,6 +458,44 @@ const main=$("main");
 SECTIONS.forEach(s=>{ main.appendChild(buildSection(s)); });
 SECTIONS.forEach(s=>{ buildFilters(s); drawMap(s); render(s.key); $("q-"+s.key).oninput=e=>{state[s.key].q=e.target.value.trim();render(s.key);}; });
 document.querySelectorAll(".mapzoom button").forEach(b=>b.onclick=()=>{const k=b.dataset.k;zoomLevel[k]=b.dataset.z==="in"?Math.min(zoomLevel[k]*1.35,3):Math.max(zoomLevel[k]/1.35,1);const svg=$("map-"+k);svg.style.width=(100*zoomLevel[k])+"%";});
+
+/* ---- QUICK BAR: filter toggle · random pick · stuck border ---- */
+const WIDE=window.matchMedia("(min-width: 861px)");
+function setFilterOpen(k,open){ $("f-"+k).hidden=!open; $("ft-"+k).setAttribute("aria-expanded",String(open)); }
+SECTIONS.forEach(s=>{
+ setFilterOpen(s.key,WIDE.matches);
+ $("ft-"+s.key).onclick=()=>setFilterOpen(s.key,$("f-"+s.key).hidden);
+ $("dice-"+s.key).onclick=()=>pickRandom(s.key);
+});
+const lastPick={}; let pickTimers=[];
+function pickRandom(key){
+ const list=SMETA[key].data.filter(p=>matches(p,key)); if(!list.length) return;
+ let pool=list; if(list.length>1&&lastPick[key]) pool=list.filter(p=>keyOf(p)!==lastPick[key]);
+ const p=pool[Math.floor(Math.random()*pool.length)], k=keyOf(p); lastPick[key]=k;
+ pickTimers.forEach(clearTimeout); pickTimers=[];
+ document.querySelectorAll(".pin.flash").forEach(g=>g.classList.remove("flash"));
+ document.querySelectorAll(".card.picked").forEach(c=>c.classList.remove("picked"));
+ const dice=$("dice-"+key); dice.classList.remove("roll"); void dice.offsetWidth; dice.classList.add("roll");
+ if(!WIDE.matches) setFilterOpen(key,false);
+ const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches, beh=reduce?"auto":"smooth";
+ const pin=$("map-"+key).querySelector(`.pin[data-key="${k}"]`);
+ // 1) bring the map (and the pin, if zoomed) into view
+ $("mw-"+key).scrollIntoView({behavior:beh,block:"start"});
+ const ms=$("ms-"+key), svg=$("map-"+key);
+ if(pin&&ms.scrollWidth>ms.clientWidth){ const sc=svg.clientWidth/783; ms.scrollTo({left:p._x*sc-ms.clientWidth/2,top:p._y*sc-ms.clientHeight/2,behavior:beh}); }
+ // 2) flash the pin, 3) then scroll to its card and highlight it
+ pickTimers.push(setTimeout(()=>{ if(pin){ pin.classList.add("flash"); } },reduce?0:450));
+ pickTimers.push(setTimeout(()=>{
+  if(pin) pin.classList.remove("flash");
+  const card=$("cards-"+key).querySelector(`.card[data-key="${k}"]`); if(!card) return;
+  card.scrollIntoView({behavior:beh,block:"center"});
+  card.classList.add("picked"); pickTimers.push(setTimeout(()=>card.classList.remove("picked"),3400));
+ },reduce?900:1650));
+}
+let qbTick=false;
+function markStuck(){ qbTick=false; SECTIONS.forEach(s=>{ const qb=$("qb-"+s.key), r=qb.getBoundingClientRect(), sec=$("sec-"+s.key).getBoundingClientRect(); qb.classList.toggle("stuck", r.top<=1 && sec.bottom>r.bottom+8); }); }
+window.addEventListener("scroll",()=>{ if(!qbTick){ qbTick=true; requestAnimationFrame(markStuck); } },{passive:true});
+markStuck();
 
 /* DOORS (cover) */
 const doors=$("doors");
