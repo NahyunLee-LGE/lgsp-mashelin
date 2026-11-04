@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LG 사이언스파크 맛집 GUIDE · 시즌2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);box-sizing:border-box;
+ --f-disp:"Gowun Batang",Georgia,serif;--f-body:"IBM Plex Sans KR",system-ui,sans-serif}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+html,body{margin:0;padding:0}
+body{font-family:var(--f-body);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;
+ --bg:#f7f3ec;--card:#fffdf8;--card-line:#e7e0d1;--text:#2a2620;--muted:#8a8273;--accent:#17808c;--accent-ink:#fff;--accent2:#b2822b}
+button{font-family:inherit;cursor:pointer}
+a{color:inherit}
+.display{font-family:var(--f-disp);font-weight:700}
+
+[data-theme="curation"]{--bg:#f4f4ef;--card:#ffffff;--card-line:#e4e3da;--text:#2a2620;--muted:#8a8273;--accent:#17808c;--accent-ink:#fff;--accent2:#b2822b;
+ --pin-food:#17808c;--pin-cafe:#b2822b;--pin-ink:#fff;
+ --map-road:#eceae2;--map-block:#fff;--map-block-line:#dedcd2;--map-park:#bcd69a;--map-park-line:#a8c783;--map-parklabel:#4a6327;--map-blabel:#8a8273;--map-station-tan:#cbb37e;--map-magok:#9a86c4;--map-subway:#7fb2d9;--map-label:#fff;--mc-block:#d9d4c6;--mc-bld:#e7e1d2;--mc-base:#f4f0e6;--mc-park:#b8d179}
+[data-theme="night"]{--bg:#171310;--card:#211b14;--card-line:#39301f;--text:#f0ebe0;--muted:#9a9183;--accent:#d8a24a;--accent-ink:#241a0a;--accent2:#d8a24a;
+ --pin-food:#d8a24a;--pin-cafe:#d8a24a;--pin-ink:#241a0a;
+ --map-road:#140f0b;--map-block:#1e1810;--map-block-line:#4a3f2c;--map-park:#24301d;--map-park-line:#3c4e2d;--map-parklabel:#9cbf72;--map-blabel:#9a9183;--map-station-tan:#5c4e30;--map-magok:#564877;--map-subway:#3f6f85;--map-label:#171310;--mc-block:#2a241b;--mc-bld:#352d21;--mc-base:#1b1710;--mc-park:#1e1a12}
+[data-theme="chain"]{--bg:#f6ebe4;--card:#fffaf6;--card-line:#ecdcd1;--text:#26221c;--muted:#857d6f;--accent:#c7452f;--accent-ink:#fff;--accent2:#d99a2e;
+ --pin-food:#c7452f;--pin-cafe:#c7452f;--pin-ink:#fff;
+ --map-road:#efe1d8;--map-block:#fffaf6;--map-block-line:#ecd8cc;--map-park:#c7dca6;--map-park-line:#b4cd90;--map-parklabel:#5a7132;--map-blabel:#857d6f;--map-station-tan:#d8c08a;--map-magok:#b596c6;--map-subway:#d98a6f;--map-label:#fff;--mc-block:#e2d7cb;--mc-bld:#ece2d6;--mc-base:#f6ebe4;--mc-park:#cbdfa6}
+
+/* HERO */
+.hero{max-width:1040px;margin:0 auto;padding:calc(var(--safe-t) + 54px) 18px 30px}
+.eyebrow{font-size:12px;font-weight:600;color:var(--accent);letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px}
+.htitle{font-family:var(--f-disp);font-weight:700;font-size:clamp(1.5rem,6vw,3.6rem);line-height:1.04;letter-spacing:-.015em;margin:0;white-space:nowrap}
+.htitle .en{color:var(--accent);font-style:italic}
+.hsub{font-size:clamp(1rem,3vw,1.08rem);color:var(--muted);margin:20px 0 0;max-width:760px;line-height:1.8}
+.hcred{margin-top:18px;font-size:12.5px;color:var(--muted);line-height:1.7}
+.hcred b{color:var(--text);font-weight:600;margin-right:4px}
+.hmeta{font-size:11.5px;color:var(--muted);opacity:.85;margin-top:6px}
+.hnote{font-size:11.5px;color:var(--muted);opacity:.85;margin-top:4px}
+
+/* NAV */
+.secnav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,#f7f3ec 90%,transparent);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid #e7e0d1}
+.secnav-in{max-width:1040px;margin:0 auto;padding:10px 18px calc(10px);display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.secnav-in::-webkit-scrollbar{display:none}
+.secnav button{flex:none;border:1px solid #e0d9c9;background:transparent;color:#8a8273;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:500;white-space:nowrap;transition:all .18s}
+.secnav button:hover{color:#2a2620}
+.secnav button.on{background:#2a2620;color:#f7f3ec;border-color:#2a2620}
+
+/* SECTION */
+.sec{background:var(--bg);color:var(--text);transition:background .3s}
+.secwrap{max-width:1040px;margin:0 auto;padding:40px 18px 48px}
+.sechead{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.sicon{color:var(--accent);flex:none;line-height:0}
+.sicon svg{width:46px;height:38px;display:block}
+.stitle{font-family:var(--f-disp);font-weight:700;font-size:clamp(1.5rem,5vw,2.2rem);letter-spacing:-.02em;margin:0;line-height:1.1}
+.sconcept{font-size:13px;color:var(--muted);margin:2px 0 0}
+.scount{font-size:12px;color:var(--muted);letter-spacing:.04em;margin-top:2px}
+
+.searchbox{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--card-line);border-radius:12px;padding:11px 15px;margin-top:20px;transition:border-color .18s}
+.searchbox:focus-within{border-color:var(--accent)}
+.searchbox span{color:var(--muted);font-size:16px}
+.searchbox input{border:none;outline:none;background:transparent;color:var(--text);font-size:15px;width:100%;font-family:inherit}
+.searchbox input::placeholder{color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center}
+.chip{border:1px solid var(--card-line);background:transparent;color:var(--muted);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:500;transition:all .16s}
+.chip:hover{border-color:var(--accent);color:var(--text)}
+.chip.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.fgroup-label{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:0 3px 0 8px;font-weight:600}
+.fgroup-label:first-child{margin-left:0}
+.chip.reset{margin-left:auto;color:var(--accent);border-color:transparent;font-weight:600}
+
+.mapwrap{position:relative;border:1px solid var(--card-line);border-radius:16px;overflow:hidden;background:var(--map-road);margin-top:16px;box-shadow:0 1px 3px rgba(42,38,32,.04)}
+.mapscroll{overflow:auto;-webkit-overflow-scrolling:touch}
+.mapscroll svg{display:block;width:100%;height:auto}
+.mapzoom{position:absolute;right:14px;bottom:14px;display:flex;flex-direction:column;gap:7px;z-index:5}
+.mapzoom button{width:36px;height:36px;border-radius:10px;border:1px solid var(--card-line);background:var(--card);color:var(--text);font-size:18px;line-height:1;display:grid;place-items:center;box-shadow:0 2px 8px rgba(42,38,32,.1)}
+.maphint{position:absolute;left:14px;top:14px;font-size:11px;color:var(--map-label);background:color-mix(in srgb,var(--text) 55%,transparent);padding:4px 10px;border-radius:999px;pointer-events:none}
+.mapsvg text{font-family:var(--f-body)}
+[data-theme="night"] .mapsvg text{fill:#efe9db}
+[data-theme="night"] .mapsvg path[fill="#FFFFFF"],[data-theme="night"] .mapsvg rect[fill="#FFFFFF"],[data-theme="night"] .mapsvg polygon[fill="#FFFFFF"]{fill:#241c12}
+.pin{cursor:pointer;transition:opacity .2s}
+.pin circle{stroke:none}
+.pin text{fill:var(--pin-ink);font-family:var(--f-body);font-weight:600;font-size:11px;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.pin.dim{opacity:.18}
+.pin.sel circle{stroke:var(--accent);stroke-width:3}
+.pin.food circle{fill:var(--pin-food)}.pin.cafe circle{fill:var(--pin-cafe)}.pin.single circle{fill:var(--pin-food)}
+.mlabel{font-family:var(--f-body);font-weight:600;fill:var(--map-label);text-anchor:middle;dominant-baseline:central;font-size:10.5px}
+.mblabel{font-family:var(--f-body);font-weight:500;fill:var(--map-blabel);text-anchor:middle;dominant-baseline:central;font-size:11px}
+.mparklabel{font-family:var(--f-disp);font-weight:700;fill:var(--map-parklabel);text-anchor:middle;dominant-baseline:central;font-size:14px}
+
+.group-h{font-family:var(--f-disp);font-weight:700;font-size:1.1rem;letter-spacing:-.01em;margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+.group-h .gcount{font-family:var(--f-body);font-weight:500;font-size:12px;color:var(--muted)}
+.gdot{width:9px;height:9px;border-radius:50%;flex:none}
+.gdot.food{background:var(--pin-food)}.gdot.cafe{background:var(--pin-cafe)}
+.countline{font-size:12px;color:var(--muted);margin-top:18px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));gap:12px}
+.card{border:1px solid var(--card-line);background:var(--card);border-radius:13px;padding:14px 15px;text-align:left;display:flex;gap:13px;align-items:flex-start;width:100%;min-height:92px;box-shadow:0 1px 2px rgba(42,38,32,.03);transition:transform .16s,box-shadow .16s,border-color .16s}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(42,38,32,.08);border-color:transparent}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 30%,transparent)}
+.badge{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--pin-ink)}
+.badge.food{background:var(--pin-food)}.badge.cafe{background:var(--pin-cafe)}.badge.single{background:var(--pin-food)}
+.card-body{min-width:0;flex:1}
+.card-name{display:block;font-size:15px;font-weight:600;color:var(--text);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-desc{display:block;font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:999px;background:transparent;border:1px solid var(--card-line);color:var(--muted)}
+.tag.res{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 42%,var(--card-line))}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:46px 0}
+
+footer{max-width:1040px;margin:0 auto;padding:30px 18px calc(var(--safe-b) + 40px);font-size:12px;color:#8a8273;text-align:center}
+.topbtn{display:inline-block;margin-bottom:18px;border:1px solid #e0d9c9;background:#fffdf8;color:#2a2620;border-radius:999px;padding:11px 22px;font-size:13px;font-weight:600;cursor:pointer;transition:all .18s}
+.topbtn:hover{border-color:#17808c;color:#17808c}
+.fcap{color:#8a8273}
+
+/* SHEET */
+#overlay{position:fixed;inset:0;background:rgba(26,22,17,.46);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(2px)}
+#overlay.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:50%;transform:translateX(-50%) translateY(110%);bottom:0;width:min(560px,100%);background:var(--card);color:var(--text);border-radius:20px 20px 0 0;z-index:90;padding:22px 24px calc(var(--safe-b) + 26px);transition:transform .32s cubic-bezier(.2,.85,.25,1);max-height:86vh;overflow:auto;box-shadow:0 -12px 48px rgba(26,22,17,.24);border:1px solid var(--card-line);border-bottom:none}
+.sheet.on{transform:translateX(-50%) translateY(0)}
+.sheet-grab{width:40px;height:4px;border-radius:2px;background:var(--card-line);margin:0 auto 18px}
+.sheet-head{position:relative;padding-right:40px}
+.sheet-badge{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:16px;font-weight:600;color:var(--pin-ink)}
+.badge-c{background:var(--accent)}
+.sheet-cat{font-size:11.5px;color:var(--muted);font-weight:500;letter-spacing:.04em}
+.sheet-name{font-family:var(--f-disp);font-weight:700;font-size:21px;letter-spacing:-.01em;line-height:1.25;margin-top:3px}
+.sheet-close{position:absolute;top:0;right:0;border:1px solid var(--card-line);background:transparent;color:var(--muted);border-radius:10px;width:34px;height:34px;font-size:15px}
+.sheet-desc{font-size:14px;line-height:1.65;margin:16px 0 0;opacity:.92}
+.sheet-fields{margin-top:16px;display:flex;flex-direction:column;gap:10px;padding-top:15px;border-top:1px solid var(--card-line)}
+.frow{display:flex;gap:12px;font-size:13.5px}
+.frow .fk{color:var(--muted);flex:none;width:64px}
+.frow .fv{font-weight:500}
+.sheet-links{display:flex;gap:10px;margin-top:18px}
+.linkbtn{flex:1;text-align:center;text-decoration:none;border-radius:11px;padding:12px;font-size:14px;font-weight:600;border:1px solid var(--card-line);color:var(--text);background:transparent}
+.linkbtn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+.social{margin-top:20px;padding-top:16px;border-top:1px solid var(--card-line)}
+.likebtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--card-line);background:transparent;color:var(--text);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;transition:all .16s}
+.likebtn:hover{border-color:var(--accent)}
+.likebtn.liked{background:color-mix(in srgb,var(--accent) 12%,var(--card));border-color:var(--accent);color:var(--accent)}
+.likebtn svg{width:16px;height:16px}
+.likebtn[disabled]{opacity:.55;cursor:default}
+.cm-head{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);margin:18px 0 10px;text-transform:uppercase}
+.cm-list{display:flex;flex-direction:column;gap:10px}
+.cm{background:color-mix(in srgb,var(--text) 4%,var(--card));border:1px solid var(--card-line);border-radius:10px;padding:10px 12px}
+.cm .cm-nick{font-size:12px;font-weight:600}
+.cm .cm-time{font-size:11px;color:var(--muted);margin-left:6px;font-weight:400}
+.cm .cm-text{font-size:13.5px;line-height:1.5;margin-top:4px;white-space:pre-wrap;word-break:break-word}
+.cm-empty{font-size:13px;color:var(--muted);padding:6px 0}
+.cm-compose{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.cm-compose input,.cm-compose textarea{width:100%;border:1px solid var(--card-line);background:var(--card);color:var(--text);border-radius:10px;padding:10px 12px;font-family:inherit;font-size:13.5px;outline:none}
+.cm-compose input:focus,.cm-compose textarea:focus{border-color:var(--accent)}
+.cm-compose textarea{min-height:54px;resize:vertical}
+.cm-row{display:flex;gap:8px;align-items:center}
+.cm-row input{flex:1}
+.cm-submit{flex:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600}
+.cm-submit[disabled]{opacity:.5;cursor:default}
+.cm-note{font-size:12.5px;color:var(--muted);line-height:1.55;margin-top:8px}
+
+.doors{max-width:1040px;margin:6px auto 0;padding:0 18px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.doors{grid-template-columns:1fr}}
+.door{text-align:left;border:1px solid var(--card-line);background:var(--card);color:var(--text);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;min-height:214px;box-shadow:0 1px 3px rgba(42,38,32,.05);transition:transform .2s,box-shadow .2s,border-color .2s}
+.door:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(42,38,32,.12);border-color:transparent}
+.door:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.door .dillo{color:var(--accent);line-height:0;margin-bottom:14px}
+.door .dillo svg{width:52px;height:43px}
+.door .dnum{font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--muted)}
+.door .dname{font-family:var(--f-disp);font-weight:700;font-size:clamp(1.05rem,1.9vw,1.25rem);line-height:1.25;letter-spacing:-.01em;margin-top:6px;white-space:nowrap;color:var(--text)}
+.door .dconcept{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.55}
+.door .dcount{margin-top:auto;padding-top:16px;font-size:12px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:7px}
+.door .darr{transition:transform .2s}
+.door:hover .darr{transform:translateX(4px)}
+#cards-night,#cards-chain{margin-top:30px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="eyebrow">SEASON 2</div>
+  <h1 class="htitle display">LG 사이언스파크 맛집 <span class="en">Guide</span></h1>
+  <p class="hsub">LG 사이언스파크 맛집 Guide 시즌1의 업데이트된 맛집들과 카페들을 소개합니다.<br>여기에 더불어 술안주와 회식을 위한 저녁 전용 메뉴를 추가했고,<br>체인점이지만 놓치기 어려운 가게들도 소개하려 합니다.<br>많이 애용해주세요!</p>
+  <div class="hcred"><b>만든 사람들</b> 김상우(디자인경영센터 MS디자인연구소) · 김보람(CTO 광학연구소) · 이나현(CTO SW센터)</div>
+  <div class="hmeta">#맛지도 #마곡맛집 #내돈내산 #마곡의밤 · Last updated 251107</div>
+  <div class="hnote">※ 가게 설명은 네이버지도 AI 요약을 이용했습니다. 오류가 있는 경우 일부 수정했고, AI 요약을 제공하지 않은 업체는 저희가 작성했습니다.</div>
+</header>
+
+<div class="doors" id="doors"></div>
+<main id="main"></main>
+<footer><button class="topbtn" id="topBtn">↑ 맨 위로</button><div class="fcap">LG 사이언스파크 맛집 Guide 시즌2</div></footer>
+
+<div id="overlay"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true">
+  <div class="sheet-grab"></div>
+  <div class="sheet-head">
+    <button class="sheet-close" id="shClose" aria-label="닫기">✕</button>
+    <div class="sheet-cat" id="shCat"></div>
+    <div class="sheet-name" id="shName"></div>
+  </div>
+  <p class="sheet-desc" id="shDesc"></p>
+  <div class="sheet-fields" id="shFields"></div>
+  <div class="sheet-links" id="shLinks"></div>
+  <div class="social" id="shSocial"></div>
+</div>
+
+<script>
+const C_FOOD=[
+  {tab:"curation",cat:"food",n:1,name:"105405 Steak&Bar",desc:"오픈주방에서 즐기는 정성 가득 요리",zone:"마곡나루",reserve:true,menu:"치킨 스테이크 16,000원 / 까르보나라 18,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:2,name:"송쭈집",desc:"자극적이지 않은 양념의 깊은 맛",zone:"마곡나루",reserve:false,menu:"쭈꾸미+사리몽땅 18,000원",price:"$"},
+  {tab:"curation",cat:"food",n:3,name:"천천향 마라탕&마라샹궈",desc:"얼얼한 매력의 마곡나루 대표 마라탕",zone:"마곡나루",reserve:false,menu:"마라탕(소, 고기 별도) 13,000원",price:"$"},
+  {tab:"curation",cat:"food",n:4,name:"봉이밥 마곡본점",desc:"건강하고 든든한 집밥 한 상",zone:"마곡나루",reserve:false,menu:"보리비빔밥 9,500원 / 털레기 2인분 23,000원",price:"$"},
+  {tab:"curation",cat:"food",n:5,name:"Amazing Pizza",desc:"베스트 7가지 피자로 입맛 저격",zone:"마곡나루",reserve:false,menu:"콤비네이션 피자R 28,9000원",price:""},
+  {tab:"curation",cat:"food",n:6,name:"장수식당",desc:"담백한 제육볶음과 함께하는 식사",zone:"마곡나루",reserve:false,menu:"고등어 조림 12,000원 / 고기 청국장 10,000원",price:""},
+  {tab:"curation",cat:"food",n:7,name:"중식당 청가",desc:"가성비 탕수육과 함께하는 행복한 식사",zone:"마곡나루",reserve:false,menu:"해물짜장면 7,000원 / 등심 탕수육 20,000원",price:""},
+  {tab:"curation",cat:"food",n:8,name:"올웨이즈 베이글",desc:"마곡나루역 근처 꼭 방문할 맛집",zone:"마곡나루",reserve:false,menu:"연어 샌드위치 7,900원 / 햄치즈 샌드위치 9,300원",price:""},
+  {tab:"curation",cat:"food",n:9,name:"렌쇼카츠",desc:"두툼한 고기의 육즙 가득한 로스카츠",zone:"마곡나루",reserve:false,menu:"모듬카츠 15,500원",price:""},
+  {tab:"curation",cat:"food",n:10,name:"오복수산나루",desc:"친절한 직원과 함께하는 특별한 식사",zone:"원그로브",reserve:true,menu:"회덮밥 18,000원 / 카이센동 25,000원",price:"$$"},
+  {tab:"curation",cat:"food",n:11,name:"온기",desc:"청결한 매장에서 즐기는 따뜻한 한끼",zone:"원그로브",reserve:false,menu:"돼지곰탕 12,000원 / 바지락 곰탕 13,000원",price:"$"},
+  {tab:"curation",cat:"food",n:12,name:"돈탐구소",desc:"부드러운 고기와 특별한 소스 조화",zone:"마곡역",reserve:true,menu:"런치 26,000원 / 디너 58,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:13,name:"가마메시야 울림",desc:"조용한 분위기에서 즐기는 오마카세",zone:"마곡역",reserve:true,menu:"런치 오마카세 31,000원 / 디너 오마카세 45,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:14,name:"마가렛 Marguerite",desc:"신선한 재료로 완성된 이탈리안 미식",zone:"마곡역",reserve:true,menu:"머쉬룸 리조또 21,000원 / 봉골레 22,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:15,name:"타치가와텐",desc:"생활의 달인이 만든 황금비율 텐동",zone:"마곡역",reserve:false,menu:"올스타텐동 16,500원",price:"$"},
+  {tab:"curation",cat:"food",n:16,name:"지원산시도삭면",desc:"바삭한 가지튀김으로 완성되는 한상",zone:"마곡역",reserve:false,menu:"도삭면 10,000원 / 새우볶음밥 9,000원",price:"$"},
+  {tab:"curation",cat:"food",n:17,name:"한우곱해장",desc:"언제나 기대되는 마곡의 대표 해장국집",zone:"마곡역",reserve:false,menu:"한우곱해장국 14,000원 / 한우곱창전골 24,000원",price:"$"},
+  {tab:"curation",cat:"food",n:18,name:"비바 나폴리",desc:"신선한 재료로 완성된 이탈리안 맛",zone:"마곡역",reserve:true,menu:"마르게리타 22,000원 / 라자냐 25,000원",price:"$$"},
+  {tab:"curation",cat:"food",n:19,name:"아우어 루꼴라",desc:"기념일을 빛내줄 맛있는 공간",zone:"마곡역",reserve:true,menu:"루꼴라 바질 스테이크 피자 29,000원 / 투움바 파스타 20,900원",price:"$$"},
+  {tab:"curation",cat:"food",n:20,name:"설담",desc:"조용한 프라이빗 룸에서의 특별한 식사",zone:"마곡역",reserve:true,menu:"런치A 29,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:21,name:"소릇",desc:"아늑한 분위기 속 맛있는 한 끼",zone:"마곡역",reserve:true,menu:"점심 상차림 32,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:22,name:"하양옥",desc:"오징어보쌈과 칼국수의 환상 궁합",zone:"마곡역",reserve:false,menu:"벌교꼬막 솥밥 정식 17,000원 / 오징어보쌈 38,000원",price:"$"},
+  {tab:"curation",cat:"food",n:23,name:"혼키",desc:"오차즈케의 매력",zone:"마곡역",reserve:false,menu:"명란 오차즈케 11,900원 / 듬뿍회덮밥 15,900원",price:"$"},
+  {tab:"curation",cat:"food",n:24,name:"서울홍성원",desc:"믿고 찾는 서울 최고의 중식집",zone:"마곡역",reserve:false,menu:"삼선 간짜장 11,000원 / 런치코스A 30,000원",price:"$$"},
+  {tab:"curation",cat:"food",n:25,name:"대가원 서울 본점",desc:"생일을 특별하게 만드는 한우 생일상",zone:"마곡역",reserve:true,menu:"백합탕 샤브샤브 세트 25,000원 / 한우 육전 35,000원",price:"$$$"},
+  {tab:"curation",cat:"food",n:26,name:"다온참치",desc:"참치 해체쇼로 눈과 입이 즐거운 경험",zone:"마곡역",reserve:true,menu:"점심 특선 정식 20,000원 / 특참치회 덮밥 15,000원",price:"$$"},
+  {tab:"curation",cat:"food",n:27,name:"도야지",desc:"야장의 감성과 오돌갈비의 완벽 조합",zone:"마곡역",reserve:false,menu:"모듬세트(510g) 51,000원 / 덜미살 17,000원",price:"$"},
+  {tab:"curation",cat:"food",n:28,name:"카츠륜",desc:"트러플 향이 어우러진 바삭함",zone:"마곡역",reserve:false,menu:"등심 카츠 12,000원 / 안심 카츠 14,000원",price:"$"},
+  {tab:"curation",cat:"food",n:29,name:"타케로스",desc:"특별한 날엔 타케로스에서의 추억",zone:"마곡역",reserve:false,menu:"쉬림프 타코 2P 14,500원 / 퀘사디아 20,900원",price:"$$"}
+];
+const C_CAFE=[
+  {tab:"curation",cat:"cafe",n:1,name:"타르데마 베이커리 마곡나루",desc:"소금빵으로 유명한 마곡의 대표 맛집",zone:"마곡나루",reserve:false,menu:"갈릭 소금빵 3,800원 / 명란 치즈 소프트 바게트 4,300원",price:""},
+  {tab:"curation",cat:"cafe",n:2,name:"고드니 마곡 로스터리",desc:"마곡의 숨은 보석 같은 카페 공간",zone:"마곡나루",reserve:false,menu:"아메리카노 5,300원",price:""},
+  {tab:"curation",cat:"cafe",n:3,name:"엘리케이커",desc:"귀여운 토끼 케이크로 사랑받기",zone:"마곡나루",reserve:false,menu:"클래식 바스크 38,000원",price:""},
+  {tab:"curation",cat:"cafe",n:4,name:"라코펠라",desc:"바닐라빈 라떼와 테라스의 완벽한 조화",zone:"마곡나루",reserve:false,menu:"아메리카노 5,500원",price:""},
+  {tab:"curation",cat:"cafe",n:5,name:"크레스타운",desc:"묵직한 스모키 풍미의 커피 한 잔",zone:"원그로브",reserve:false,menu:"아메리카노 4,600원 / 오리지널 크로와상 4,000원",price:""},
+  {tab:"curation",cat:"cafe",n:6,name:"크랙 로스터스",desc:"직접 로스팅한 깊은 커피의 매력",zone:"원그로브",reserve:false,menu:"아메리카노 4,500원 / 빅토리안 샌드 쿠키 2,800원",price:""},
+  {tab:"curation",cat:"cafe",n:7,name:"굴리",desc:"친절함과 함께하는 맛있는 시간",zone:"원그로브",reserve:false,menu:"시그니쳐 모카굴리 7,900원 / 페스츄리 몽블랑 6,800원",price:""},
+  {tab:"curation",cat:"cafe",n:8,name:"타이거 브루스",desc:"마곡에서 꼭 방문해야 할 카페",zone:"마곡역",reserve:false,menu:"오렌지 타이거 4,500원 / 공주 밤 식빵 6,500원",price:""},
+  {tab:"curation",cat:"cafe",n:9,name:"벨레투 에티오피아 커피 클럽",desc:"스폐셜티 및 로스터리 카페",zone:"마곡역",reserve:false,menu:"싱글 오리진 에스프레소 5,000원",price:""},
+  {tab:"curation",cat:"cafe",n:10,name:"하우슬리",desc:"마곡에서 만나는 커피의 명소",zone:"마곡역",reserve:false,menu:"아메리카노 3,800원 / 플레인 휘낭시에 3,000원",price:""},
+  {tab:"curation",cat:"cafe",n:11,name:"썬블리치베이크 샵",desc:"다양한 맛의 소금빵 천국",zone:"마곡역",reserve:false,menu:"말돈 소금빵 3,300원 / 이즈니 버터 휘낭시에 3,000원",price:""},
+  {tab:"curation",cat:"cafe",n:12,name:"해리스 헤이스",desc:"테이크아웃으로 즐기는 라떼의 진수",zone:"마곡역",reserve:false,menu:"아메리카노 4,000원 / 카페 라떼 4,800원",price:""},
+  {tab:"curation",cat:"cafe",n:13,name:"라잇트 커피 로스터스",desc:"신메뉴 수제 콜라와 특별한 커피 조합",zone:"마곡역",reserve:false,menu:"탭 아메리카노 3,700원 / 카페 라떼 4,500원",price:""},
+  {tab:"curation",cat:"cafe",n:14,name:"오지오커피",desc:"크림이 예술인 크림라떼 전문점",zone:"마곡역",reserve:false,menu:"크림 라떼 6,000원 / 아메리카노 4,000원",price:""},
+  {tab:"curation",cat:"cafe",n:15,name:"카페 우드진",desc:"우드 인테리어와 함께하는 편안한 휴식",zone:"마곡역",reserve:false,menu:"우디슈패너 4,000원 / 라떼 4,300원",price:""},
+  {tab:"curation",cat:"cafe",n:16,name:"베이글리스트",desc:"육쪽마늘의 깊은 향이 담긴 베이글",zone:"마곡역",reserve:false,menu:"그릴 샌드위치 8,900원 / 소금 베이글 4,300원",price:""},
+  {tab:"curation",cat:"cafe",n:17,name:"히비",desc:"마곡에서 가장 사랑받는 커피 명소",zone:"마곡역",reserve:false,menu:"아메리카노 3,500원 / 까눌레 3,300원",price:""},
+  {tab:"curation",cat:"cafe",n:18,name:"베이커리 룬",desc:"초코 크루아상 속 진한 초콜릿 풍미",zone:"발산역",reserve:false,menu:"소금빵 3개 6,900원 / 크루아상 3,500원",price:""},
+  {tab:"curation",cat:"cafe",n:19,name:"르와조",desc:"손맛이 느껴지는 정성스러운 핸드드립",zone:"발산역",reserve:false,menu:"아메리카노 3,500원 / 에그타르트 3,500원",price:""},
+  {tab:"curation",cat:"cafe",n:20,name:"비바디앙",desc:"발산역 대표 베이커리 카페",zone:"발산역",reserve:false,menu:"모엘르 과나하 11,000원 / 바게트 트라디시옹 4,000원",price:""}
+];
+const NIGHT=[
+  {tab:"night",n:1,name:"미사토",desc:"메로구이로 완성하는 이자카야의 밤",zone:"마곡나루",reserve:true,menu:"오늘의 회 30,000원 / 메로 미소구이 30,000원",price:"$$$"},
+  {tab:"night",n:2,name:"호호방",desc:"게내장 볶음우동의 고소한 풍미",zone:"마곡나루",reserve:true,menu:"한우 모츠나베 32,000원 / 게내장 볶음우동 20,000원",price:"$$"},
+  {tab:"night",n:3,name:"902 탭하우스 피자&치킨",desc:"야장에서 즐기는 시원한 맥주 한잔",zone:"마곡나루",reserve:false,menu:"콤비네이션 피자 29,500원 / 킹 크리스피 치킨 25,000원",price:"$"},
+  {tab:"night",n:4,name:"안뜰",desc:"맛있는 안주와 함께하는 편안한 시간",zone:"마곡나루",reserve:false,menu:"항정살 들기름 냉채 22,000원 / 명란크림과 감자채전 21,500원",price:"$"},
+  {tab:"night",n:5,name:"극락전 마곡나루점",desc:"바삭한 모듬전과 함께하는 즐거운 시간",zone:"마곡나루",reserve:false,menu:"극락 모듬전 29,000원 / 옛날 떡볶이 20,000원",price:"$$"},
+  {tab:"night",n:6,name:"이름없는 달밤",desc:"감바스와 함께하는 황홀한 맛의 여정",zone:"마곡나루",reserve:false,menu:"감바스&치아바타 24,000원 / 김치 두루치기&수육 21,000원",price:"$"},
+  {tab:"night",n:7,name:"랜돌프비어",desc:"친절한 서비스와 함께하는 시원한 한잔",zone:"마곡나루",reserve:false,menu:"베이컨 치즈 피자 21,900원",price:"$"},
+  {tab:"night",n:8,name:"쿠시노아",desc:"오리온 생맥주와 함께하는 일본 여행",zone:"마곡나루",reserve:false,menu:"혼술 참치 23,900원 / 스지탕 23,000원",price:"$"},
+  {tab:"night",n:9,name:"선주가 마곡본점",desc:"다양한 술과 함께 즐기는 모둠 한상",zone:"마곡나루",reserve:false,menu:"선주가 모듬한상 50,000원 / 문어 바지락 술찜 24,000원",price:"$$"},
+  {tab:"night",n:10,name:"와인바 뱅션",desc:"도란도란 이야기 나누기 좋은 분위기",zone:"원그로브",reserve:true,menu:"광어 카르파치오 24,000원 / 로스트 콜리플라워 26,000원",price:"$"},
+  {tab:"night",n:11,name:"홍능참숯불갈비",desc:"최고의 갈비와 함께하는 특별한 식사",zone:"마곡역",reserve:true,menu:"수제 돼지갈비 19,800원 / 소 양념갈비 44,000원",price:"$$$"},
+  {tab:"night",n:12,name:"구락",desc:"다양한 메뉴로 채우는 행복",zone:"마곡역",reserve:true,menu:"호르몬동 15,000원 / 사시미 세트 31,000원",price:"$"},
+  {tab:"night",n:13,name:"온포",desc:"다양한 하이볼과 어울리는 안주 페어링",zone:"마곡역",reserve:true,menu:"숙성 모듬 사시미 36,000원 / 우삼겹 탄탄나베 24,000원",price:"$$"},
+  {tab:"night",n:14,name:"우요 마곡",desc:"맛과 분위기 모두 잡은 마곡의 보석",zone:"마곡역",reserve:false,menu:"백합탕 22,000원 / 특수부위 수육전골 30,000원",price:"$$"},
+  {tab:"night",n:15,name:"쇼쿠",desc:"친절한 서비스와 함께하는 특별한 저녁",zone:"마곡역",reserve:false,menu:"사시미 모리아와세 26,000원 / 고등어 봉초밥 28,000원",price:"$$"},
+  {tab:"night",n:16,name:"신사펍 발산",desc:"단체 모임도 가능한 아늑한 공간",zone:"발산역",reserve:false,menu:"청양 크림 파스타 15,900원 / 감바스 18,900원",price:"$$"},
+  {tab:"night",n:17,name:"마담주안상",desc:"맛과 분위기가 어우러진 완벽한 공간",zone:"발산역",reserve:true,menu:"한식 맡김차림 28,000원 / 돼지갈비 구이 20,000원",price:"$$"},
+  {tab:"night",n:18,name:"바틀리스트",desc:"간단한 안주와 함께하는 글라스 와인",zone:"발산역",reserve:true,menu:"낙지젓 카펠리니 15,000원 / 하우스 소스 순살치킨 10,900원",price:"$$"},
+  {tab:"night",n:19,name:"다이어메이커 마곡점",desc:"다양한 칵테일과 함께하는 특별한 시간",zone:"발산역",reserve:false,menu:"쉬림프 피자 23,000원 / 치즈 플래터 26,000원",price:"$$"},
+  {tab:"night",n:20,name:"발산한우진곱창",desc:"고소함이 터지는 한우 소곱창의 매력",zone:"발산역",reserve:false,menu:"한우모듬구이 29,000원 / 곱해장국 14,000원",price:"$$"},
+  {tab:"night",n:21,name:"해물과 차돌박이",desc:"애견 동반 가능한 야장의 자유로움",zone:"발산역",reserve:false,menu:"해차 모듬 A세트 54,000원 / 차돌박이 관자구이 25,000원",price:"$$"},
+  {tab:"night",n:22,name:"야키토리 우마이",desc:"꼬치와 하이볼의 환상 조합",zone:"발산역",reserve:false,menu:"간단 코스 29,800원 / 매콤 야끼 우동 16,900원",price:"$$"},
+  {tab:"night",n:23,name:"고우",desc:"분위기 좋고 야키토리 맛있는 이자카야",zone:"발산역",reserve:false,menu:"야끼교자 19,300원 / 명품 치킨 난방 19,800원",price:"$"}
+];
+const CHAIN=[
+  {tab:"chain",n:1,name:"모담다이닝 마곡엘지아트센터점",desc:"특별한 날을 빛내줄 고급 다이닝",zone:"마곡나루",reserve:true,menu:"모담 솥밥 정식 22,900원",price:"$$"},
+  {tab:"chain",n:2,name:"로마옥 마곡",desc:"블루리본이 인정한 맛집의 품격",zone:"마곡나루",reserve:true,menu:"매생이 관자 리조또 26,000원 / 뽀모도로 파스타 27,000원",price:"$$$"},
+  {tab:"chain",n:3,name:"남도복국 마곡나루역점",desc:"복튀김의 바삭함과 복껍질무침의 조화",zone:"마곡나루",reserve:false,menu:"까치복국 12,800원 / 복 튀김 15,000원",price:"$"},
+  {tab:"chain",n:4,name:"코지로오모테나시 마곡나루점",desc:"생맥주와 찰떡궁합 치킨가라아게",zone:"마곡나루",reserve:false,menu:"야끼도리 10종 32,000원 / 나가사끼 짬뽕 나베 26,000원",price:"$$"},
+  {tab:"chain",n:5,name:"오근내 10 닭갈비",desc:"양 많고 맛있는 닭갈비의 진수",zone:"원그로브",reserve:false,menu:"닭갈비 16,000원",price:"$"},
+  {tab:"chain",n:6,name:"중앙해장 원그로브점",desc:"친절하고 맛있는 해장국과 곱창전골",zone:"원그로브",reserve:false,menu:"한우 양선지 해장국 14,000원 / 곱창전골 중 67,000원",price:"$"},
+  {tab:"chain",n:7,name:"숙성도 원그로브점",desc:"제주도의 그 맛을 그대로 경험하기",zone:"원그로브",reserve:false,menu:"960 숙성 뼈등심 39,000원 / 720 숙성 삼겹살 23,000원",price:"$$$"},
+  {tab:"chain",n:8,name:"오제제 마곡코엑스점",desc:"카레와 어우러진 부드러운 돈카츠 조합",zone:"원그로브",reserve:false,menu:"안심 돈가스+새우 튀김 24,000원 / 등심 돈가스 16,000원",price:"$$"},
+  {tab:"chain",n:9,name:"딤딤섬 원그로브점",desc:"다양한 딤섬과 전체적으로 맛있는 요리들",zone:"원그로브",reserve:false,menu:"삼겹차슈 바오번 세트 16,000원 / 하가우 7,800원",price:"$$"},
+  {tab:"chain",n:10,name:"상해루 코엑스 마곡점",desc:"맛과 분위기 모두 잡은 중식 명소",zone:"원그로브",reserve:false,menu:"유니 짜장면 10,000원 / 평일 점심 A세트 25,000원",price:"$$"},
+  {tab:"chain",n:11,name:"공탕 원그로브점",desc:"비 오는 날 딱 좋은 공탕과 비빔국수",zone:"원그로브",reserve:false,menu:"돼지공탕 13,000원 / 토렴 육회비빔밥 16,000원",price:"$"},
+  {tab:"chain",n:12,name:"페이홍러우 원그로브점",desc:"프라이빗 룸에서 즐기는 특별한 순간",zone:"원그로브",reserve:true,menu:"유니 짜장면 10,000원 / 삼선 해물짬뽕 16,000원",price:"$$"},
+  {tab:"chain",n:13,name:"탭샵바 마곡점",desc:"혼자서도 부담 없는 편안한 혼술 공간",zone:"원그로브",reserve:false,menu:"잠봉뵈르 샌드위치 13,900원 / 오이스터 파스타 16,900원",price:"$$"},
+  {tab:"chain",n:14,name:"노컷서울 마곡",desc:"힙한 분위기 속 즐기는 정통 수제버거",zone:"원그로브",reserve:false,menu:"오리지널 서울 싱글 세트 13,400원",price:"$"},
+  {tab:"chain",n:15,name:"석암생 소금구이 마곡본점",desc:"돌판 위에서 즐기는 특별한 식사",zone:"마곡역",reserve:false,menu:"로스 삼겹 16,000원 / 고추장 양념구이 17,000원",price:"$$"},
+  {tab:"chain",n:16,name:"녹지 마곡본점",desc:"친절한 서비스와 부드러운 맛의 조화",zone:"마곡역",reserve:true,menu:"숙성 생갈비 34,000원 / 특제 양념구이 33,000원",price:"$$$"},
+  {tab:"chain",n:17,name:"멘츠루 마곡점",desc:"진한 토리파이탄의 깊은 매력",zone:"마곡역",reserve:false,menu:"소유 라멘 11,000원 / 토리파이탄 12,000원",price:"$"},
+  {tab:"chain",n:18,name:"수하동 마곡점",desc:"진한 국물의 특별한 곰탕 한 그릇",zone:"마곡역",reserve:false,menu:"곰탕 14,000원",price:"$$"},
+  {tab:"chain",n:19,name:"일일미미 마곡직영점",desc:"바삭한 탕수육과 함께하는 행복",zone:"마곡역",reserve:false,menu:"간짜장 10,000원 / 삼선 짬뽕 14,000원",price:"$"},
+  {tab:"chain",n:20,name:"스시사쿠 마곡점",desc:"신선한 재료의 정갈한 초밥 한 점",zone:"마곡역",reserve:true,menu:"스시 코스A 20,000원 / 스시 코스B 30,000원",price:"$$"},
+  {tab:"chain",n:21,name:"트라고 마곡",desc:"야외 테라스에서 즐기는 특별한 식사",zone:"마곡역",reserve:true,menu:"생면 해산물 파스타 28,000원 / 가정식 생면 라자냐 25,000원",price:"$$$"},
+  {tab:"chain",n:22,name:"넴넴 마곡직영점",desc:"합리적인 가격에 즐기는 다채로운 메뉴",zone:"발산역",reserve:false,menu:"왕갈비 쌀국수 16,000원 / 분짜 15,000원",price:"$"},
+  {tab:"chain",n:23,name:"모토이시 마곡발산점",desc:"일본 감성이 느껴지는 숯불 구이 집",zone:"발산역",reserve:false,menu:"6품 모듬 SET 320g 75,000원 / 모츠나베 2인분 34,000원",price:"$$"}
+];
+
+const SECTIONS=[
+ {key:"curation",title:"마곡의 맛집들",concept:"맛집지도제작단의 Food Reporter가 직접 고른 식당들과 카페",data:[...C_FOOD,...C_CAFE],
+  illo:'<svg viewBox="0 0 48 40" fill="currentColor"><circle cx="24" cy="21" r="13" opacity=".15"/><circle cx="24" cy="21" r="7.5" opacity=".38"/><circle cx="24" cy="21" r="3" opacity=".7"/><rect x="7" y="7" width="1.8" height="7" rx=".9" opacity=".85"/><rect x="10" y="7" width="1.8" height="7" rx=".9" opacity=".85"/><rect x="6.6" y="12.6" width="5.2" height="1.6" rx=".8" opacity=".85"/><rect x="8.6" y="13.5" width="1.8" height="19" rx=".9" opacity=".85"/><path d="M40 7c2.4 1.6 2.4 7 0 9v16.5h-1.9V7z" opacity=".85"/></svg>'},
+ {key:"night",title:"마곡의 밤은 낮보다 아름답다",concept:"술자리·회식을 위한 저녁 전용 셀렉션",data:NIGHT,
+  illo:'<svg viewBox="0 0 48 40" fill="currentColor"><circle cx="39" cy="9" r="4.5" opacity=".3"/><path d="M10 10h10l-5 7z" opacity=".85"/><rect x="14.1" y="17" width="1.6" height="12" opacity=".85"/><rect x="10" y="29" width="10" height="1.8" rx=".9" opacity=".85"/><rect x="26" y="15" width="7" height="15" rx="2" opacity=".35"/><rect x="28.5" y="8" width="2" height="7" opacity=".35"/><rect x="26" y="20" width="7" height="2" opacity=".6"/></svg>'},
+ {key:"chain",title:"세상의 모든 체인",concept:"마곡의 미식을 더욱 돋보이게 하는 경쟁력 있는 체인점 셀렉션",data:CHAIN,
+  illo:'<svg viewBox="0 0 48 40" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"><rect x="7" y="13" width="22" height="14" rx="7" opacity=".9"/><rect x="19" y="20" width="22" height="14" rx="7" transform="rotate(-18 30 27)" opacity=".45"/></svg>'},
+];
+const SMETA={}; SECTIONS.forEach(s=>SMETA[s.key]=s);
+const ZONES_ALL=["마곡나루","원그로브","마곡역","발산역"];
+const ZBOX={ "마곡나루":{x:12,y:14,w:195,h:138},"원그로브":{x:12,y:432,w:190,h:128},"마곡역":{x:218,y:432,w:296,h:190},"발산역":{x:520,y:300,w:245,h:320} };
+
+const MAPSVG="\n<text transform=\"matrix(1 0 0 1 579.6396 391.8359)\"><tspan x=\"0\" y=\"0\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">Creative Director</tspan><tspan x=\"0\" y=\"10.799\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">Bite Reporter</tspan><tspan x=\"0\" y=\"21.6\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">Experience Strategist</tspan><tspan x=\"0\" y=\"32.399\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">Contents Curator</tspan></text>\n<text transform=\"matrix(1 0 0 1 476.8291 390.168)\"><tspan x=\"0\" y=\"0\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">김상우 (MS디자인연구소)</tspan><tspan x=\"0\" y=\"10.801\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">이나현 (SW센터)</tspan><tspan x=\"0\" y=\"21.601\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">송교현 (UX연구소)</tspan><tspan x=\"0\" y=\"32.4\" fill=\"#FFFFFF\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"9\">김보람 (광학연구소)</tspan></text>\n<rect x=\"-0.701\" y=\"-0.871\" fill=\"#E5E4E6\" width=\"785.035\" height=\"646\"/>\n<rect x=\"223.477\" y=\"451.268\" fill=\"var(--mc-block)\" width=\"132.197\" height=\"51.97\"/>\n<rect x=\"365.267\" y=\"512.709\" fill=\"var(--mc-block)\" width=\"73.293\" height=\"18.82\"/>\n<rect x=\"529.797\" y=\"505.666\" fill=\"var(--mc-block)\" width=\"88.073\" height=\"28.462\"/>\n<rect x=\"625.966\" y=\"505.666\" fill=\"var(--mc-block)\" width=\"16.877\" height=\"28.656\"/>\n<rect x=\"572.106\" y=\"540.231\" fill=\"var(--mc-block)\" width=\"48.272\" height=\"23.233\"/>\n<rect x=\"530.953\" y=\"540.232\" fill=\"var(--mc-block)\" width=\"37.123\" height=\"23.232\"/>\n<rect x=\"365.267\" y=\"539.786\" fill=\"var(--mc-block)\" width=\"73.293\" height=\"23.679\"/>\n<rect x=\"141.019\" y=\"371.435\" fill=\"var(--mc-block)\" width=\"63.728\" height=\"68.116\"/>\n<rect x=\"75.432\" y=\"451.391\" fill=\"var(--mc-block)\" width=\"130.404\" height=\"77.718\"/>\n<polygon fill=\"var(--mc-block)\" points=\"139.052,439.551 74.355,439.551 74.84,371.435 139.052,371.435 \"/>\n<rect x=\"360.255\" y=\"301.639\" fill=\"var(--mc-park)\" width=\"16.899\" height=\"137.912\"/>\n<rect x=\"377.204\" y=\"301.639\" fill=\"var(--mc-block)\" width=\"133.217\" height=\"137.912\"/>\n<rect x=\"530.953\" y=\"299.082\" fill=\"var(--mc-block)\" width=\"86.917\" height=\"139.458\"/>\n<rect x=\"625.966\" y=\"299.082\" fill=\"var(--mc-block)\" width=\"32.249\" height=\"140.469\"/>\n<rect x=\"671.742\" y=\"299.082\" fill=\"var(--mc-block)\" width=\"16.664\" height=\"70.674\"/>\n<rect x=\"671.742\" y=\"371.435\" fill=\"var(--mc-block)\" width=\"16.664\" height=\"30.013\"/>\n<rect x=\"671.742\" y=\"403.491\" fill=\"var(--mc-block)\" width=\"16.664\" height=\"36.06\"/>\n<rect x=\"671.742\" y=\"192.114\" fill=\"var(--mc-block)\" width=\"16.664\" height=\"96.444\"/>\n<rect x=\"625.966\" y=\"192.114\" fill=\"var(--mc-block)\" width=\"32.249\" height=\"96.444\"/>\n<rect x=\"587.151\" y=\"192.114\" fill=\"var(--mc-block)\" width=\"29.498\" height=\"96.444\"/>\n<rect x=\"222.585\" y=\"301.639\" fill=\"var(--mc-block)\" width=\"137.885\" height=\"137.912\"/>\n<rect x=\"75.151\" y=\"168.255\" fill=\"var(--mc-block)\" width=\"130.104\" height=\"196.972\"/>\n<rect x=\"79.851\" y=\"174.811\" fill=\"var(--mc-bld)\" width=\"63.087\" height=\"84.279\"/>\n<rect x=\"147.944\" y=\"168.255\" fill=\"var(--mc-park)\" width=\"57.311\" height=\"133.383\"/>\n<polygon fill=\"var(--mc-park)\" points=\"151.815,258.098 75.151,323.565 75.151,365.228 155.782,297.633 \"/>\n<rect x=\"665.063\" y=\"192.114\" fill=\"var(--mc-park)\" width=\"6.679\" height=\"96.444\"/>\n<rect x=\"665.063\" y=\"299.082\" fill=\"var(--mc-park)\" width=\"6.679\" height=\"70.674\"/>\n<rect x=\"665.063\" y=\"371.435\" fill=\"var(--mc-park)\" width=\"6.679\" height=\"68.116\"/>\n<polygon fill=\"var(--mc-block)\" points=\"694.813,289.476 694.813,192.114 768.983,192.114 756.683,289.476 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"694.569,299.082 756.011,299.082 745.933,366.986 694.813,366.986 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"582.888,192.114 582.888,288.559 526.534,288.559 526.042,192.114 \"/>\n<rect x=\"75.432\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"59.978\" height=\"25.073\"/>\n<rect x=\"139.052\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"66.783\" height=\"25.073\"/>\n<rect x=\"139.052\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"66.783\" height=\"47.793\"/>\n<rect x=\"226.883\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"60.712\" height=\"47.793\"/>\n<rect x=\"291.319\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"31.57\" height=\"47.793\"/>\n<rect x=\"324.621\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"32.854\" height=\"47.793\"/>\n<rect x=\"392.181\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"47.613\" height=\"47.793\"/>\n<rect x=\"443.813\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"63.479\" height=\"47.793\"/>\n<rect x=\"529.149\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"51.159\" height=\"47.793\"/>\n<rect x=\"588.975\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"27.736\" height=\"27.557\"/>\n<rect x=\"529.149\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"57.286\" height=\"27.557\"/>\n<rect x=\"75.432\" y=\"622.234\" fill=\"var(--mc-block)\" width=\"58.683\" height=\"47.793\"/>\n<rect x=\"364.011\" y=\"622.234\" fill=\"var(--mc-park)\" width=\"28.467\" height=\"47.793\"/>\n<rect x=\"-0.701\" y=\"75.157\" fill=\"var(--mc-block)\" width=\"64.347\" height=\"76.354\"/>\n<rect x=\"332.323\" y=\"-10.679\" fill=\"var(--mc-block)\" width=\"20.575\" height=\"50.35\"/>\n<rect x=\"289.664\" y=\"-5.884\" fill=\"var(--mc-block)\" width=\"36.859\" height=\"65.216\"/>\n<rect x=\"223.069\" y=\"-5.884\" fill=\"var(--mc-block)\" width=\"61.22\" height=\"65.216\"/>\n<polygon fill=\"var(--mc-block)\" points=\"222.37,67.229 327.398,67.229 327.398,86.191 311.729,109.232 222.37,110.968 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"221.955,114.821 310.25,114.821 283.603,139.277 223.146,139.277 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"694.813,368.477 746.036,368.477 735.946,439.551 694.813,439.551 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"750.438,369.033 773.903,369.033 764.366,439.551 741.382,439.551 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"752.091,366.986 774.487,366.986 784.731,299.082 760.599,299.082 \"/>\n<path fill=\"var(--mc-block)\" d=\"M526.519,184.17l90.986,0.485c0,0,0.432-53.394,4.696-54.512h-95.683V184.17z\"/>\n<path fill=\"var(--mc-block)\" d=\"M769.853,183.912h-75.039c0,0-0.729-19.708,1.578-24.564l31.57-65.691h53.427L769.853,183.912z\"/>\n<polygon fill=\"var(--mc-block)\" points=\"665.55,53.844 697.606,70.722 736.341,-4.926 704.163,-21.317 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"703.799,71.693 731.604,85.9 783.089,85.9 784.304,20.744 742.897,-0.554 \"/>\n<path fill=\"var(--mc-block)\" d=\"M629.958,132.687c3.521-18.7,32.662-72.734,32.662-72.734l32.07,16.878l-28.548,55.248\n\tc-11.171,24.65-8.972,51.764-8.972,51.764h-31.705C625.466,183.843,624.751,148.575,629.958,132.687z\"/>\n<polygon fill=\"var(--mc-block)\" points=\"761.626,289.476 785.712,289.476 789.767,243.089 767.698,239.806 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"728.448,534.809 753.866,534.809 757.67,512.709 731.28,512.709 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"727.313,539.26 752.569,539.26 749.903,564.598 735.49,564.598 722.618,564.598 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"732.603,502.832 756.075,502.832 764.47,450.458 739.884,450.458 \"/>\n<rect x=\"75.508\" y=\"-1.302\" fill=\"var(--mc-block)\" width=\"50.511\" height=\"65.72\"/>\n<rect x=\"132.389\" y=\"-0.503\" fill=\"var(--mc-block)\" width=\"72.866\" height=\"64.921\"/>\n<rect x=\"75.151\" y=\"72.099\" fill=\"var(--mc-block)\" width=\"51.354\" height=\"79.412\"/>\n<rect x=\"132.389\" y=\"71.161\" fill=\"var(--mc-block)\" width=\"72.357\" height=\"80.35\"/>\n<rect x=\"443.813\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"64.289\" height=\"29.305\"/>\n<rect x=\"364.011\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"75.783\" height=\"27.2\"/>\n<rect x=\"227.935\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"59.66\" height=\"25.073\"/>\n<rect x=\"291.319\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"67.188\" height=\"25.073\"/>\n<path fill=\"var(--mc-block)\" d=\"M672.915,451.179h62.245l-5.988,48.106l-2.368,4.889c0,0-27.953-4.305-53.479-6.563L672.915,451.179z\"/>\n<polygon fill=\"var(--mc-block)\" points=\"625.774,451.571 670.269,451.571 671.247,496.867 625.614,497.559 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"530.953,451.571 618.089,451.571 617.985,497.383 530.953,497.224 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"365.267,503.237 436.319,503.237 511.612,495.446 511.612,451.571 365.267,451.571 \"/>\n<rect x=\"441.415\" y=\"539.786\" fill=\"var(--mc-block)\" width=\"69.006\" height=\"23.679\"/>\n<polygon fill=\"var(--mc-block)\" points=\"441.415,532.371 511.017,532.371 510.421,529.426 510.421,505.96 441.415,512.709 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"626.675,564.063 719.704,564.063 724.558,539.786 626.675,539.786 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"645.525,534.322 723.278,534.322 728.329,510.485 675.041,504.573 645.525,504.573 \"/>\n<polyline fill=\"var(--mc-block)\" points=\"718.855,612.884 743.06,616.041 747.61,588.883 729.905,588.883 722.376,587.871 718.855,612.398 \n\t\"/>\n<rect x=\"223.477\" y=\"511.502\" fill=\"var(--mc-block)\" width=\"132.197\" height=\"51.963\"/>\n<rect x=\"4.519\" y=\"168.255\" fill=\"var(--mc-block)\" width=\"58.683\" height=\"169.351\"/>\n<polygon fill=\"var(--mc-park)\" points=\"63.202,336.899 4.519,390.818 4.519,432.48 63.687,377.143 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"63.202,336.899 3.468,393.553 3.468,336.899 \"/>\n<rect x=\"75.432\" y=\"614.603\" fill=\"var(--mc-base)\" width=\"542.438\" height=\"7.632\"/>\n<rect x=\"60.523\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"14.908\" height=\"80.498\"/>\n<rect x=\"134.114\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"4.938\" height=\"80.498\"/>\n<rect x=\"205.835\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"22.667\" height=\"80.498\"/>\n<rect x=\"287.601\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"3.82\" height=\"80.498\"/>\n<rect x=\"357.474\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"6.537\" height=\"80.498\"/>\n<rect x=\"438.862\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"4.951\" height=\"80.903\"/>\n<rect x=\"616.819\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"10.604\" height=\"80.903\"/>\n<rect x=\"507.292\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"21.857\" height=\"80.903\"/>\n<rect x=\"580.362\" y=\"614.603\" fill=\"var(--mc-base)\" width=\"2.898\" height=\"55.83\"/>\n<rect x=\"321.465\" y=\"622.234\" fill=\"var(--mc-base)\" width=\"3.819\" height=\"47.793\"/>\n<rect x=\"586.187\" y=\"589.529\" fill=\"var(--mc-base)\" width=\"2.899\" height=\"26.045\"/>\n<rect x=\"-0.7\" y=\"151.51\" fill=\"var(--mc-base)\" width=\"205.955\" height=\"16.745\"/>\n<rect x=\"223.069\" y=\"-8.42\" fill=\"var(--mc-base)\" width=\"103.455\" height=\"3.446\"/>\n<rect x=\"332.598\" y=\"-12.757\" fill=\"var(--mc-base)\" width=\"20.5\" height=\"2.079\"/>\n<rect x=\"330.901\" y=\"39.672\" fill=\"var(--mc-base)\" width=\"22.905\" height=\"2.078\"/>\n<rect x=\"75.151\" y=\"365.228\" fill=\"var(--mc-base)\" width=\"130.104\" height=\"6.207\"/>\n<rect x=\"138.323\" y=\"371.435\" fill=\"var(--mc-base)\" width=\"2.695\" height=\"67.104\"/>\n<rect x=\"222.37\" y=\"502.23\" fill=\"var(--mc-base)\" width=\"216.19\" height=\"10.479\"/>\n<rect x=\"355.674\" y=\"451.268\" fill=\"var(--mc-base)\" width=\"9.593\" height=\"112.197\"/>\n<rect x=\"365.267\" y=\"531.529\" fill=\"var(--mc-base)\" width=\"145.154\" height=\"8.257\"/>\n<rect x=\"224.366\" y=\"288.559\" fill=\"var(--mc-base)\" width=\"286.594\" height=\"13.08\"/>\n<rect x=\"510.421\" y=\"288.559\" fill=\"var(--mc-base)\" width=\"20.532\" height=\"274.906\"/>\n<rect x=\"616.711\" y=\"192.114\" fill=\"var(--mc-base)\" width=\"9.255\" height=\"247.437\"/>\n<rect x=\"658.215\" y=\"192.114\" fill=\"var(--mc-base)\" width=\"6.849\" height=\"249.037\"/>\n<rect x=\"617.87\" y=\"451.179\" fill=\"var(--mc-base)\" width=\"8.096\" height=\"83.144\"/>\n<rect x=\"530.953\" y=\"497.224\" fill=\"var(--mc-base)\" width=\"87.401\" height=\"8.442\"/>\n<rect x=\"223.828\" y=\"59.332\" fill=\"var(--mc-base)\" width=\"108.771\" height=\"8.086\"/>\n<rect x=\"223.828\" y=\"108.423\" fill=\"var(--mc-base)\" width=\"87.865\" height=\"8.086\"/>\n<rect x=\"223.489\" y=\"137.864\" fill=\"var(--mc-base)\" width=\"58.873\" height=\"8.085\"/>\n<path fill=\"var(--mc-block)\" d=\"M664.681,184.556h23.969c0,0-1.371-30.038,4.301-37.291c5.674-7.254,28.736-55.983,28.736-55.983\n\tl-20.5-11.761l-29.201,57.515C671.985,137.035,663.286,157.401,664.681,184.556z\"/>\n<path fill=\"var(--mc-block)\" d=\"M332.704,41.75h20.917v14.03c0,0-12.79,26.364-21.758,40.192L332.704,41.75z\"/>\n<path fill=\"var(--mc-block)\" d=\"M527.241,127.259c0,0,95.224,0.167,95.527,0.485c0.303,0.318,32.364-70.686,32.364-70.686L563.288,9.08\n\tC563.288,9.08,517.06,58.738,527.241,127.259z\"/>\n<rect x=\"530.953\" y=\"288.559\" fill=\"var(--mc-base)\" width=\"257.004\" height=\"10.969\"/>\n<rect x=\"688.31\" y=\"192.114\" fill=\"var(--mc-base)\" width=\"6.504\" height=\"246.425\"/>\n<rect x=\"665.063\" y=\"369.316\" fill=\"var(--mc-base)\" width=\"24.355\" height=\"2.118\"/>\n<rect x=\"694.813\" y=\"366.986\" fill=\"var(--mc-base)\" width=\"80.884\" height=\"2.33\"/>\n<rect x=\"671.742\" y=\"401.447\" fill=\"var(--mc-base)\" width=\"16.664\" height=\"2.044\"/>\n<rect x=\"438.56\" y=\"502.23\" fill=\"var(--mc-base)\" width=\"2.855\" height=\"61.234\"/>\n<rect x=\"568.076\" y=\"540.232\" fill=\"var(--mc-base)\" width=\"4.03\" height=\"23.232\"/>\n<rect x=\"620.379\" y=\"540.232\" fill=\"var(--mc-base)\" width=\"6.296\" height=\"23.232\"/>\n<rect x=\"670.292\" y=\"450.458\" fill=\"var(--mc-base)\" width=\"3.322\" height=\"46.251\"/>\n<rect x=\"721.412\" y=\"511.955\" transform=\"matrix(-0.984 -0.1783 0.1783 -0.984 1339.7889 1206.0807)\" fill=\"var(--mc-base)\" width=\"5.372\" height=\"61.746\"/>\n<rect x=\"741.115\" y=\"296.303\" transform=\"matrix(-0.9903 -0.139 0.139 -0.9903 1424.8726 904.0132)\" fill=\"var(--mc-base)\" width=\"5.756\" height=\"211.932\"/>\n<rect x=\"526.936\" y=\"183.843\" fill=\"var(--mc-base)\" width=\"243.096\" height=\"8.271\"/>\n<rect x=\"642.843\" y=\"505.666\" fill=\"var(--mc-base)\" width=\"2.683\" height=\"29.574\"/>\n<rect x=\"716.753\" y=\"613.977\" transform=\"matrix(0.9847 0.1744 -0.1744 0.9847 118.7125 -117.8719)\" fill=\"var(--mc-base)\" width=\"26.358\" height=\"4.888\"/>\n<rect x=\"767.556\" y=\"238.439\" transform=\"matrix(0.9897 0.1432 -0.1432 0.9897 42.4091 -109.0886)\" fill=\"var(--mc-base)\" width=\"23.082\" height=\"3.307\"/>\n<rect x=\"727.163\" y=\"85.9\" fill=\"var(--mc-base)\" width=\"59.174\" height=\"9.041\"/>\n<rect x=\"768.804\" y=\"91.88\" transform=\"matrix(0.9928 0.1199 -0.1199 0.9928 28.5015 -91.173)\" fill=\"var(--mc-base)\" width=\"6.456\" height=\"198.844\"/>\n<rect x=\"554.149\" y=\"42.72\" transform=\"matrix(0.8863 0.4632 -0.4632 0.8863 95.6317 -294.393)\" fill=\"var(--mc-base)\" width=\"186.268\" height=\"9.632\"/>\n<rect x=\"675.639\" y=\"-28.002\" transform=\"matrix(0.894 0.448 -0.448 0.894 78.1017 -303.5843)\" fill=\"var(--mc-base)\" width=\"10.261\" height=\"82.603\"/>\n<rect x=\"526.937\" y=\"126.847\" fill=\"var(--mc-base)\" width=\"97.328\" height=\"3.935\"/>\n<rect x=\"716.606\" y=\"-7.307\" transform=\"matrix(0.8913 0.4535 -0.4535 0.8913 94.0555 -323.0456)\" fill=\"var(--mc-base)\" width=\"8.168\" height=\"83.846\"/>\n<rect x=\"582.888\" y=\"192.114\" fill=\"var(--mc-base)\" width=\"4.264\" height=\"96.444\"/>\n<rect x=\"512.676\" y=\"126.147\" fill=\"var(--mc-base)\" width=\"14.26\" height=\"165.545\"/>\n<rect x=\"75.432\" y=\"529.108\" fill=\"var(--mc-base)\" width=\"129.314\" height=\"4.61\"/>\n<rect x=\"75.433\" y=\"533.172\" fill=\"var(--mc-block)\" width=\"129.313\" height=\"30.293\"/>\n<path fill=\"var(--mc-base)\" d=\"M731.415,517.537c-23.566-5.549-58.836-7.863-62.423-8.07l-43.141,0.75l-0.296-17.006l43.756-0.76\n\tl0.301,0.016c1.619,0.088,37.375,1.613,63.545,7.775L731.415,517.537z\"/>\n<path fill=\"var(--mc-base)\" d=\"M684.479,184.328c-0.518-23.313,4.378-36.883,4.587-37.449l0.161-0.437l31.648-60.177l12.543,6.597\n\tl-31.172,59.271c-0.675,2.105-4.006,13.485-3.598,31.878L684.479,184.328z\"/>\n<path fill=\"var(--mc-base)\" d=\"M651.571,184.67c-0.498-37.015,11.919-59.163,13.631-62.036l25.352-47.141l14.979,8.056l-25.727,47.801\n\tc-0.096,0.157-11.681,19.53-11.229,53.092L651.571,184.67z\"/>\n<path fill=\"var(--mc-base)\" d=\"M612.529,184.679c-1.92-45.601,10.882-74.309,11.428-75.509l0.082-0.175l27.908-57.818l15.317,7.393\n\tl-27.851,57.698c-0.591,1.359-11.591,27.354-9.893,67.696L612.529,184.679z\"/>\n<path fill=\"var(--mc-base)\" d=\"M282.362,145.949v-8.085c25.887-14.123,38.637-46.778,41.73-52.757V67.328h8.17l0.262,26.607l-0.596,0.447\n\tC331.125,96.04,313.535,128.943,282.362,145.949z\"/>\n<path fill=\"#CCCCCC\" d=\"M440.987,508.04\"/>\n<rect x=\"440.333\" y=\"498.729\" transform=\"matrix(0.995 -0.0995 0.0995 0.995 -47.773 49.8299)\" fill=\"var(--mc-base)\" width=\"70.918\" height=\"10.479\"/>\n<polygon fill=\"var(--mc-base)\" points=\"707.462,670.027 725.656,587.218 719.858,585.943 701.383,670.027 707.074,670.027 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"567.438,1.29 656.534,49.716 696.756,-27.574 695.302,-28.354 586.977,-28.354 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"774.891,187.688 767.952,237.236 783.474,239.823 783.474,188.93 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,142.341 780.685,141.978 775.185,184.389 783.474,185.588 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,141.272 783.474,115.827 780.092,141.901 780.685,141.978 780.823,140.906 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,141.272 780.823,140.906 780.685,141.978 783.474,142.341 \"/>\n<polyline fill=\"var(--mc-block)\" points=\"699.138,-28.354 783.474,15.613 783.474,-28.043 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,188.603 783.474,185.7 775.155,184.619 775.185,184.389 774.716,184.321 774.243,187.595 \n\t774.891,187.688 774.913,187.533 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,188.603 774.913,187.533 774.891,187.688 783.474,188.93 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,185.7 783.474,185.588 775.185,184.389 775.155,184.619 \"/>\n<line fill=\"#FFFFFF\" x1=\"586.977\" y1=\"-28.354\" x2=\"695.302\" y2=\"-28.354\"/>\n<line fill=\"#FFFFFF\" x1=\"698.146\" y1=\"-28.871\" x2=\"699.138\" y2=\"-28.354\"/>\n<path fill=\"#FFFFFF\" d=\"M783.474,460.064\"/>\n<polyline fill=\"#FFFFFF\" points=\"790.294,240.96 783.474,239.823 783.474,297.873 783.61,296.857 \"/>\n<path fill=\"#FFFFFF\" d=\"M797.173,190.315\"/>\n<path fill=\"#FFFFFF\" d=\"M791.083,186.688\"/>\n<polyline fill=\"#FFFFFF\" points=\"787.325,17.621 783.474,15.613 783.474,115.827 785.761,98.188 \"/>\n<polyline fill=\"#FFFFFF\" points=\"797.173,190.315 797.087,190.899 783.474,188.93 783.474,239.823 790.294,240.96 \"/>\n<polyline fill=\"#FFFFFF\" points=\"783.474,142.341 783.474,185.588 791.083,186.688 \"/>\n<polyline fill=\"#FFFFFF\" points=\"785.761,98.188 783.474,115.827 783.474,141.272 \"/>\n<line fill=\"#FFFFFF\" x1=\"783.474\" y1=\"141.272\" x2=\"783.474\" y2=\"142.341\"/>\n<polyline fill=\"#FFFFFF\" points=\"783.474,-28.043 783.474,15.613 787.325,17.621 \"/>\n<polyline fill=\"#FFFFFF\" points=\"791.083,186.688 783.474,185.7 783.474,188.603 797.173,190.315 \"/>\n<polygon fill=\"#FFFFFF\" points=\"783.474,188.93 797.087,190.899 797.173,190.315 783.474,188.603 \"/>\n<polygon fill=\"#FFFFFF\" points=\"783.474,185.7 791.083,186.688 783.474,185.588 \"/>\n<polyline fill=\"#FFFFFF\" points=\"783.61,296.857 783.474,297.873 783.474,460.064 \"/>\n<text transform=\"matrix(1 0 0 1 250.0347 371.4316)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">LG 사이언스파크</text>\n<text transform=\"matrix(1 0 0 1 147.6968 409.9316)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">케이스퀘어</text>\n<g>\n\t<text transform=\"matrix(1 0 0 1 120.4849 496.793)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">원그로브</text>\n</g>\n<path fill=\"var(--mc-park)\" d=\"M223.873,289.9l289.969-0.486l2.923-214.753L569.22-27.697H352.404v83.03c0,0-20.066,54.952-69.667,90.575\n\th-58.864V289.9z\"/>\n<g>\n\t<text transform=\"matrix(1 0 0 1 96.2827 218.4375)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">코엑스</text>\n</g>\n<text transform=\"matrix(1 0 0 1 350.9849 144.8398)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">서울식물원</text>\n<g>\n\t\n\t\t<rect x=\"136.603\" y=\"205.995\" transform=\"matrix(0.7071 -0.7071 0.7071 0.7071 -101.0343 185.1533)\" fill=\"#8FC5E8\" width=\"72.759\" height=\"17.082\"/>\n\t\n\t\t<text transform=\"matrix(0.7071 -0.7071 0.7071 0.7071 157.645 234.7695)\" fill=\"#F7F7F7\" font-family=\"'Pretendard-Medium-KSCpc-EUC-H'\" font-size=\"11.6568\">마곡나루역</text>\n</g>\n<rect x=\"352.898\" y=\"-28.354\" fill=\"var(--mc-park)\" width=\"216.816\" height=\"0.779\"/>\n<polygon fill=\"none\" points=\"62.716,563.465 767.462,563.465 771.506,540.231 530.953,540.231 530.953,534.128 772.265,534.128 \n\t774.831,513.337 732.798,513.337 732.798,502.23 777.341,502.23 783.474,456.274 783.474,451.571 62.716,451.571 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,589.529 762.183,589.529 763.175,614.139 783.474,614.139 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.757,620.016 761.625,620.016 759.103,636.516 783.757,640.895 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,513.337 774.831,513.337 772.265,534.128 783.474,534.128 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,540.231 771.506,540.231 767.462,563.465 783.474,563.465 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,502.23 783.474,456.274 777.341,502.23 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,539.26 783.474,534.322 772.241,534.322 772.265,534.128 530.953,534.128 530.953,540.231 \n\t771.506,540.231 771.675,539.26 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,534.322 783.474,534.128 772.265,534.128 772.241,534.322 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,539.26 771.675,539.26 771.506,540.231 783.474,540.231 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,645.694 783.474,641.305 758.804,638.505 759.103,636.516 757.421,636.213 756.503,641.317 \n\t758.279,641.636 758.399,640.771 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,641.305 783.474,640.895 759.103,636.516 758.804,638.505 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,620.004 783.474,614.139 763.175,614.139 760.651,614.139 760.651,620.016 761.597,620.016 \n\t761.8,618.672 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,620.004 761.8,618.672 761.597,620.016 783.474,620.016 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,502.832 776.95,502.832 777.036,502.23 730.276,502.23 730.276,513.337 774.401,513.337 \n\t783.474,513.337 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"783.474,502.832 783.474,502.23 777.341,502.23 777.261,502.832 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,646.164 758.279,641.636 754.335,670.027 755.44,670.027 783.474,670.027 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"783.474,645.694 758.399,640.771 758.279,641.636 783.474,646.164 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"707.074,670.027 735.386,670.027 743.909,620.776 718.855,616.601 \"/>\n<rect x=\"-0.865\" y=\"451.571\" fill=\"var(--mc-block)\" width=\"63.581\" height=\"111.894\"/>\n<rect x=\"-0.701\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"61.225\" height=\"80.498\"/>\n<polygon fill=\"var(--mc-block)\" points=\"62.952,436.865 63.438,377.447 4.755,432.012 4.755,436.865 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"782.886,588.883 784.334,588.883 784.334,564.598 767.999,564.598 768.196,563.465 57.95,563.465 \n\t-0.701,563.465 -0.701,589.529 55.74,589.529 762.875,589.529 762.849,588.883 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"784.334,588.883 782.839,588.883 762.155,588.883 762.183,589.529 784.334,589.529 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"767.472,563.465 767.265,564.598 784.334,564.598 784.334,563.465 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"-0.865,451.391 57.734,451.391 57.734,451.571 783.474,451.571 783.474,438.539 57.734,438.539 \n\t-0.865,438.539 \"/>\n<rect x=\"4.519\" y=\"451.391\" fill=\"var(--mc-base)\" width=\"58.197\" height=\"0.181\"/>\n<rect x=\"-0.865\" y=\"64.418\" fill=\"var(--mc-base)\" width=\"206.12\" height=\"10.536\"/>\n<rect x=\"4.519\" y=\"436.407\" fill=\"var(--mc-block)\" width=\"58.197\" height=\"2.132\"/>\n<rect x=\"0.546\" y=\"451.391\" fill=\"#FFFFFF\" width=\"3.973\" height=\"0.181\"/>\n<polygon fill=\"#FFFFFF\" points=\"698.146,-28.871 695.302,-28.354 699.138,-28.354 \"/>\n<polygon fill=\"#FFFFFF\" points=\"783.474,640.895 785.924,641.335 786.812,620.21 783.65,620.016 783.474,620.016 \"/>\n<polygon fill=\"#FFFFFF\" points=\"783.474,641.305 785.913,641.581 785.924,641.335 783.474,640.895 \"/>\n<polygon fill=\"#FFFFFF\" points=\"783.474,620.016 783.65,620.016 783.474,620.004 \"/>\n<rect x=\"783.474\" y=\"563.465\" fill=\"#FFFFFF\" width=\"0.506\" height=\"1.133\"/>\n<rect x=\"783.474\" y=\"438.539\" fill=\"#FFFFFF\" width=\"3.338\" height=\"13.032\"/>\n<g>\n\t<rect x=\"131.987\" y=\"559.415\" fill=\"#8868AD\" width=\"72.759\" height=\"17.082\"/>\n\t\n\t\t<text transform=\"matrix(1 0 0 1 151.8315 571.7559)\" fill=\"#F7F7F7\" font-family=\"'Pretendard-Medium-KSCpc-EUC-H'\" font-size=\"11.6568\">마곡역 </text>\n</g>\n<rect x=\"-0.701\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"63.417\" height=\"96.417\"/>\n<rect x=\"224.366\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"59.225\" height=\"20.759\"/>\n<rect x=\"289.664\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"36.859\" height=\"20.759\"/>\n<rect x=\"332.598\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"20.3\" height=\"15.855\"/>\n<rect x=\"75.432\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"47.835\" height=\"27.524\"/>\n<rect x=\"132.863\" y=\"-28.613\" fill=\"var(--mc-block)\" width=\"71.883\" height=\"27.524\"/>\n<polygon fill=\"var(--mc-base)\" points=\"75.151,-28.613 63.646,-28.613 63.646,67.804 62.716,67.804 62.716,564.598 75.432,564.598 \n\t75.432,-1.088 75.151,-1.088 \"/>\n<rect x=\"62.716\" y=\"-28.613\" fill=\"var(--mc-base)\" width=\"0.931\" height=\"96.417\"/>\n<rect x=\"75.151\" y=\"-28.613\" fill=\"var(--mc-base)\" width=\"0.281\" height=\"27.524\"/>\n<polygon fill=\"var(--mc-base)\" points=\"221.186,-28.613 204.746,-28.613 204.746,-1.088 204.746,564.598 224.366,564.598 224.366,-7.854 \n\t221.186,-7.854 \"/>\n<rect x=\"221.186\" y=\"-28.613\" fill=\"var(--mc-base)\" width=\"3.18\" height=\"20.759\"/>\n<polygon fill=\"var(--mc-base)\" points=\"131.767,-28.613 123.267,-28.613 123.267,-1.088 123.267,161.791 132.863,161.791 132.863,-1.088 \n\t131.767,-1.088 \"/>\n<rect x=\"131.767\" y=\"-28.613\" fill=\"var(--mc-base)\" width=\"1.096\" height=\"27.524\"/>\n<polygon fill=\"var(--mc-base)\" points=\"283.591,-28.613 283.591,-7.854 283.591,59.332 289.664,59.332 289.664,-7.854 289.664,-28.613 \"/>\n<polygon fill=\"var(--mc-base)\" points=\"326.703,-28.613 326.703,-7.854 326.523,-7.854 326.523,59.332 332.598,59.332 332.598,-12.757 \n\t332.598,-28.613 \"/>\n<rect x=\"326.523\" y=\"-28.613\" fill=\"var(--mc-base)\" width=\"0.179\" height=\"20.759\"/>\n<g>\n\t<polygon fill=\"var(--mc-base)\" points=\"786.915,22.079 789.218,17.624 699.261,-28.871 688.335,-28.871 \t\"/>\n\t<path fill=\"var(--mc-base)\" d=\"M519.525,63.067c-4.038,20.18-7.712,56.195-6.081,66.794l13.609-2.094\n\t\tc-1.156-7.506,1.737-40.838,5.973-61.999c2.742-13.715,33.574-63.635,53.625-93.843l-1.199-0.797h-14.754\n\t\tC557.636-8.856,523.089,45.259,519.525,63.067z\"/>\n</g>\n<polygon fill=\"var(--mc-block)\" points=\"616.711,622.234 582.576,622.234 582.576,670.027 617.187,670.027 \"/>\n<polygon fill=\"var(--mc-block)\" points=\"719.704,588.883 626.675,588.883 626.675,670.027 701.921,670.027 \"/>\n<rect x=\"-11.747\" y=\"-31.871\" fill=\"#FFFFFF\" width=\"808.919\" height=\"31\"/>\n<g>\n\t<rect x=\"132.626\" y=\"151.51\" fill=\"#D4B976\" width=\"71.883\" height=\"17.366\"/>\n\t\n\t\t<text transform=\"matrix(1 0 0 1 143.3823 163.7734)\" fill=\"#F7F7F7\" font-family=\"'Pretendard-Medium-KSCpc-EUC-H'\" font-size=\"11.6568\">마곡나루역</text>\n</g>\n<rect x=\"228.149\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"228.149\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"246.578\" y=\"309.09\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"30.943\"/>\n<rect x=\"246.578\" y=\"399.487\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"30.943\"/>\n<rect x=\"284.326\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"284.326\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"337.395\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"337.395\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"302.755\" y=\"309.09\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"30.943\"/>\n<rect x=\"302.755\" y=\"399.487\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"30.943\"/>\n<text transform=\"matrix(1 0 0 1 231.521 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">W10</text>\n<text transform=\"matrix(1 0 0 1 231.521 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">W9</text>\n<rect x=\"383.485\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<g>\n\t<rect x=\"80.359\" y=\"455.706\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"33.719\"/>\n\t<rect x=\"80.359\" y=\"455.705\" fill=\"var(--mc-bld)\" width=\"54.69\" height=\"19.006\"/>\n</g>\n<g>\n\t<rect x=\"179.051\" y=\"455.706\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"33.719\"/>\n\t<rect x=\"143.368\" y=\"455.705\" fill=\"var(--mc-bld)\" width=\"54.689\" height=\"19.006\"/>\n</g>\n<g>\n\t<rect x=\"179.051\" y=\"492.643\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"33.719\"/>\n\t<rect x=\"143.368\" y=\"507.355\" fill=\"var(--mc-bld)\" width=\"54.689\" height=\"19.006\"/>\n</g>\n<g>\n\t<rect x=\"80.359\" y=\"492.643\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"33.719\"/>\n\t<rect x=\"80.359\" y=\"507.355\" fill=\"var(--mc-bld)\" width=\"54.69\" height=\"19.006\"/>\n</g>\n<rect x=\"383.485\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<text transform=\"matrix(1 0 0 1 386.3242 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">ISC</text>\n<text transform=\"matrix(1 0 0 1 385.1611 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">SLC</text>\n<rect x=\"415.72\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"415.72\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"436.749\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"436.749\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"465.298\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"465.298\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"538.791\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.007\" height=\"39.917\"/>\n<rect x=\"538.791\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.007\" height=\"39.918\"/>\n<rect x=\"559.821\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"559.821\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<rect x=\"588.37\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"39.917\"/>\n<rect x=\"588.37\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.005\" height=\"39.918\"/>\n<rect x=\"486.327\" y=\"304.603\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.917\"/>\n<rect x=\"486.327\" y=\"395\" fill=\"var(--mc-bld)\" width=\"19.006\" height=\"39.918\"/>\n<text transform=\"matrix(1 0 0 1 490.75 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E8</text>\n<text transform=\"matrix(1 0 0 1 491.002 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E7</text>\n<text transform=\"matrix(1 0 0 1 541.4482 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E10</text>\n<text transform=\"matrix(1 0 0 1 543.2197 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E9</text>\n<text transform=\"matrix(1 0 0 1 590.915 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E14</text>\n<text transform=\"matrix(1 0 0 1 590.915 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">E13</text>\n<text transform=\"matrix(1 0 0 1 340.9063 326.1543)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">W2</text>\n<text transform=\"matrix(1 0 0 1 340.9063 418.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">W1</text>\n<text transform=\"matrix(1 0 0 1 185.5171 468.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">A</text>\n<text transform=\"matrix(1 0 0 1 185.6196 519.166)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">B</text>\n<text transform=\"matrix(1 0 0 1 88.5171 468.0088)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">D</text>\n<text transform=\"matrix(1 0 0 1 88.5171 519.166)\" font-family=\"'Pretendard-Light-KSCpc-EUC-H'\" font-size=\"8.7426\">C</text>\n<rect x=\"513.049\" y=\"127.745\" fill=\"var(--mc-base)\" width=\"7.681\" height=\"161.73\"/>\n<rect x=\"-0.7\" y=\"168.255\" fill=\"var(--mc-block)\" width=\"6.352\" height=\"270.284\"/>\n<polygon fill=\"var(--mc-base)\" points=\"733.786,670.027 735.386,670.027 754.335,670.027 755.44,670.027 783.474,460.064 783.474,297.873 \n\t\"/>\n<path fill=\"var(--mc-block)\" d=\"M5.651,391.482\"/>\n<rect x=\"332.329\" y=\"41.75\" fill=\"var(--mc-block)\" width=\"2.564\" height=\"48.25\"/>\n<rect x=\"780.849\" y=\"288.559\" fill=\"var(--mc-base)\" width=\"3.82\" height=\"10.969\"/>\n<rect x=\"-11.747\" y=\"655.832\" fill=\"#FFFFFF\" width=\"814.688\" height=\"15.798\"/>\n<rect x=\"783.409\" y=\"299.527\" fill=\"var(--mc-base)\" width=\"2.41\" height=\"356.305\"/>\n<polygon fill=\"var(--mc-park)\" points=\"19.136,418.899 -0.7,437.344 -0.864,402.212 \"/>\n<polygon fill=\"var(--mc-park)\" points=\"11.499,385.936 -5.557,401.467 4.094,413.85 15.111,412.267 \"/>\n<rect x=\"-11.747\" y=\"-3.973\" fill=\"#FFFFFF\" width=\"11.046\" height=\"675.603\"/>\n<rect x=\"782.578\" y=\"540.231\" fill=\"var(--mc-block)\" width=\"3.241\" height=\"23.233\"/>\n<rect x=\"782.578\" y=\"513.337\" fill=\"var(--mc-block)\" width=\"3.241\" height=\"20.791\"/>\n<rect x=\"783.073\" y=\"589.529\" fill=\"var(--mc-block)\" width=\"2.746\" height=\"24.609\"/>\n<rect x=\"784.015\" y=\"-0.871\" fill=\"#FFFFFF\" width=\"13.158\" height=\"656.703\"/>\n<rect x=\"783.409\" y=\"460.605\" fill=\"var(--mc-block)\" width=\"1.867\" height=\"41.625\"/>\n<rect x=\"248.134\" y=\"205.031\" transform=\"matrix(0.7071 0.7071 -0.7071 0.7071 247.2857 -127.6794)\" fill=\"var(--mc-bld)\" width=\"59.268\" height=\"59.269\"/>\n<text transform=\"matrix(1 0 0 1 249.0215 237.8843)\" font-family=\"'Pretendard-SemiBold-KSCpc-EUC-H'\" font-size=\"11.6568\">LG 아트센터</text>\n";
+/* ---- MAP BASE ---- */
+const GRAY=[[62,155,80,68],[150,155,98,68],[62,232,80,74],[150,232,98,80],[62,320,80,120],[62,455,80,150],[620,158,100,66],[730,158,72,66],[620,236,100,66],[730,236,72,66],[730,320,72,90],[286,660,120,46],[258,708,150,54],[420,700,152,40],[416,740,164,30],[588,740,56,30],[520,666,52,30],[648,664,46,36],[286,792,54,32],[360,792,54,32],[408,792,54,32],[500,792,54,32],[360,826,54,32],[540,792,90,32],[600,700,90,44],[730,486,72,54],[730,586,72,54],[730,660,72,60]];
+const LGB=[[262,486,80,54,"W10"],[352,486,80,54,"W2"],[436,486,42,54,"ISC"],[482,486,84,54,"E8"],[598,486,62,54,"E10"],[664,486,64,54,"E14"],[262,586,80,54,"W9"],[352,586,80,54,"W1"],[436,586,84,54,"SLC"],[524,586,42,54,"E7"],[598,586,62,54,"E9"],[664,586,64,54,"E13"]];
+function bld(x,y,w,h,label,fs){return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="5" fill="var(--map-block)" stroke="var(--map-block-line)" stroke-width="1"/>`+(label?`<text class="mblabel" x="${x+w/2}" y="${y+h/2}" ${fs?`font-size="${fs}"`:''}>${label}</text>`:'');}
+function mapBase(){ return MAPSVG; }
+/* assign zone-grid positions per section */
+const PINPOS={"curation-food-8": [52, 12], "curation-food-9": [87, 12], "curation-food-4": [195, 12], "curation-food-5": [11, 32], "curation-cafe-1": [143, 34], "curation-food-1": [170, 35], "curation-food-2": [86, 86], "curation-cafe-2": [191, 90], "curation-food-7": [52, 111], "curation-food-6": [12, 112], "curation-cafe-3": [175, 128], "curation-food-3": [144, 141], "curation-cafe-5": [91, 186], "curation-cafe-4": [281, 212], "curation-food-11": [195, 316], "curation-cafe-7": [124, 353], "curation-cafe-6": [148, 353], "curation-food-10": [177, 381], "curation-cafe-20": [772, 460], "curation-cafe-9": [315, 483], "curation-cafe-8": [296, 483], "curation-food-27": [499, 486], "curation-food-26": [477, 488], "curation-food-12": [266, 491], "curation-cafe-17": [447, 491], "curation-cafe-10": [376, 522], "curation-cafe-12": [394, 522], "curation-cafe-13": [453, 522], "curation-cafe-15": [470, 522], "curation-food-20": [495, 522], "curation-food-13": [247, 523], "curation-food-14": [278, 523], "curation-food-28": [294, 523], "curation-food-15": [312, 523], "curation-food-16": [329, 523], "curation-food-29": [320, 539], "curation-food-17": [234, 540], "curation-food-18": [251, 541], "curation-food-19": [268, 541], "curation-cafe-19": [541, 549], "curation-food-25": [390, 551], "curation-cafe-11": [407, 551], "curation-cafe-14": [424, 551], "curation-food-21": [461, 551], "curation-cafe-16": [499, 552], "curation-cafe-18": [670, 554], "curation-food-24": [380, 598], "curation-food-22": [276, 601], "curation-food-23": [342, 632], "chain-4": [99, 115], "chain-3": [161, 130], "chain-8": [99, 192], "chain-10": [115, 192], "chain-1": [268, 217], "chain-2": [285, 217], "chain-5": [128, 246], "chain-13": [126, 409], "chain-14": [50, 420], "chain-7": [156, 464], "chain-23": [718, 464], "chain-11": [172, 465], "chain-12": [188, 481], "chain-17": [570, 486], "chain-9": [108, 517], "chain-6": [156, 517], "chain-15": [597, 518], "chain-18": [476, 519], "chain-19": [499, 519], "chain-22": [560, 518], "chain-21": [269, 535], "chain-16": [598, 550], "chain-20": [474, 554], "night-1": [174, 35], "night-5": [88, 40], "night-3": [155, 54], "night-8": [88, 57], "night-6": [47, 91], "night-2": [170, 106], "night-9": [193, 106], "night-7": [46, 109], "night-4": [155, 132], "night-18": [772, 232], "night-20": [753, 428], "night-21": [718, 462], "night-10": [189, 479], "night-14": [295, 487], "night-22": [556, 486], "night-16": [585, 487], "night-15": [312, 488], "night-17": [570, 520], "night-19": [586, 520], "night-13": [312, 550], "night-23": [608, 553], "night-12": [473, 603], "night-11": [90, 634]};
+function layout(list){
+ const byZone={}; ZONES_ALL.forEach(z=>byZone[z]=[]);
+ list.forEach(p=>{ (byZone[p.zone]||(byZone[p.zone]=[])).push(p); });
+ Object.keys(byZone).forEach(z=>{
+  const box=ZBOX[z]; if(!box){ byZone[z].forEach(p=>{p._x=740;p._y=620;}); return; }
+  const cell=34, cols=Math.max(1,Math.floor(box.w/cell));
+  byZone[z].forEach((p,i)=>{ const col=i%cols,row=Math.floor(i/cols); p._x=box.x+col*cell+17; p._y=box.y+row*cell+17; });
+ });
+ list.forEach(p=>{const c=PINPOS[p.tab+"-"+(p.cat?p.cat+"-":"")+p.n]; if(c){p._x=c[0];p._y=c[1];}});
+ (function(){const S=22,occ={};function free(gx,gy){for(let r=0;r<60;r++){for(let dy=-r;dy<=r;dy++)for(let dx=-r;dx<=r;dx++){if(Math.max(Math.abs(dx),Math.abs(dy))!==r)continue;const k=(gx+dx)+","+(gy+dy);if(!occ[k])return[gx+dx,gy+dy];}}return[gx,gy];}list.forEach(p=>{let gx=Math.round(p._x/S),gy=Math.round(p._y/S);const f=free(gx,gy);occ[f[0]+","+f[1]]=1;p._x=f[0]*S;p._y=f[1]*S;});})();
+ list.forEach(p=>{p._x=Math.max(6,Math.min(777,p._x));p._y=Math.max(6,Math.min(648,p._y));});
+}
+SECTIONS.forEach(s=>layout(s.data));
+
+/* ---- STATE / RENDER ---- */
+const $=id=>document.getElementById(id);
+const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":String(s);return d.innerHTML;};
+const keyOf=p=>p.tab+"-"+(p.cat?p.cat+"-":"")+p.n;
+const state={}; SECTIONS.forEach(s=>state[s.key]={q:"",cat:new Set(),zone:new Set(),res:new Set(),price:new Set()});
+let curKey=null,curPlace=null,curUnsub=[];
+
+function matches(p,key){
+ const st=state[key];
+ if(st.q){const q=st.q.toLowerCase(); if(!((p.name+" "+p.desc).toLowerCase().includes(q))) return false;}
+ if(key==="curation" && st.cat.size && !st.cat.has(p.cat)) return false;
+ if(st.price.size && !st.price.has(p.price)) return false;
+ if(st.zone.size && !st.zone.has(p.zone)) return false;
+ if(st.res.size && !p.reserve) return false;
+ return true;
+}
+
+function buildSection(s){
+ const sec=document.createElement("section");
+ sec.className="sec"; sec.id="sec-"+s.key; sec.setAttribute("data-theme",s.key);
+ sec.innerHTML=`<div class="secwrap">
+   <div class="sechead"><span class="sicon">${s.illo}</span><div><h2 class="stitle">${esc(s.title)}</h2><div class="sconcept">${esc(s.concept)}</div></div></div>
+   <div class="scount" id="cnt-${s.key}"></div>
+   <div class="searchbox"><span aria-hidden="true">⌕</span><input type="search" id="q-${s.key}" placeholder="상호·설명 검색"></div>
+   <div class="filters" id="f-${s.key}"></div>
+   <div class="mapwrap"><div class="mapscroll" id="ms-${s.key}"><svg id="map-${s.key}" class="mapsvg" viewBox="0 0 783 654.667"></svg></div>
+     <div class="maphint">핀을 눌러 정보 보기 · + 로 확대</div>
+     <div class="mapzoom"><button data-z="in" data-k="${s.key}" aria-label="확대">+</button><button data-z="out" data-k="${s.key}" aria-label="축소">−</button></div></div>
+   <div id="cards-${s.key}"></div>`;
+ return sec;
+}
+function buildFilters(s){
+ const wrap=$("f-"+s.key); wrap.innerHTML=""; const st=state[s.key];
+ const add=(val,lbl,set)=>{const c=document.createElement("button");c.className="chip"+(set.has(val)?" on":"");c.textContent=lbl;c.onclick=()=>{set.has(val)?set.delete(val):set.add(val);c.classList.toggle("on");render(s.key);};wrap.appendChild(c);};
+ const lab=t=>{const l=document.createElement("span");l.className="fgroup-label";l.textContent=t;wrap.appendChild(l);};
+ if(s.key==="curation"){ lab("종류"); add("food","밥집",st.cat); add("cafe","카페",st.cat); }
+ lab("지역"); ZONES_ALL.forEach(z=>add(z,z,st.zone));
+ lab("예약"); add("y","예약 권장",st.res);
+ lab("가격"); ["$","$$","$$$"].forEach(v=>add(v,v,st.price));
+ const rb=document.createElement("button");rb.className="chip reset";rb.textContent="초기화";
+ rb.onclick=()=>{st.cat.clear();st.price.clear();st.zone.clear();st.res.clear();st.q="";$("q-"+s.key).value="";buildFilters(s);render(s.key);};
+ wrap.appendChild(rb);
+}
+const zoomLevel={}; SECTIONS.forEach(s=>zoomLevel[s.key]=1);
+function drawMap(s){
+ const svg=$("map-"+s.key);
+ let pins="";
+ s.data.forEach(p=>{ const cls=s.key==="curation"?p.cat:"single";
+  pins+=`<g class="pin ${cls}" data-key="${keyOf(p)}" tabindex="0" role="button" aria-label="${esc(p.name)}"><circle cx="${p._x}" cy="${p._y}" r="10"/><text x="${p._x}" y="${p._y}">${p.n}</text></g>`; });
+ svg.innerHTML=mapBase()+pins;
+ svg.querySelectorAll(".pin").forEach(g=>{const k=g.dataset.key;g.onclick=()=>openPlace(k);g.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openPlace(k);}};});
+ svg.style.width=(100*zoomLevel[s.key])+"%"; svg.style.height="auto";
+}
+function cardHtml(p,key){
+ const bc=key==="curation"?p.cat:"single";
+ return `<button class="card" data-key="${keyOf(p)}"><span class="badge ${bc}">${p.n}</span><span class="card-body"><span class="card-name">${esc(p.name)}</span><span class="card-desc">${esc(p.desc)}</span><span class="tagrow"><span class="tag">${esc(p.zone)}</span>${p.reserve?'<span class="tag res">예약 권장</span>':''}${p.price?'<span class="tag">'+esc(p.price)+'</span>':''}</span></span></button>`;
+}
+function render(key){
+ const s=SMETA[key], list=s.data.filter(p=>matches(p,key));
+ const vis=new Set(list.map(keyOf));
+ $("map-"+key).querySelectorAll(".pin").forEach(g=>g.classList.toggle("dim",!vis.has(g.dataset.key)));
+ if(key==="curation"){const _fc=list.filter(p=>p.cat==="food").length,_cc=list.filter(p=>p.cat==="cafe").length;$("cnt-"+key).textContent=`식당 ${_fc}곳 · 카페 ${_cc}곳`;}else{$("cnt-"+key).textContent=list.length+"곳";}
+ const box=$("cards-"+key);
+ if(key==="curation"){
+  const f=list.filter(p=>p.cat==="food"),c=list.filter(p=>p.cat==="cafe");
+  const grp=(t,arr,dot)=>arr.length?`<div class="group-h"><span class="gdot ${dot}"></span>${t} <span class="gcount">${arr.length}곳</span></div><div class="card-grid">${arr.map(p=>cardHtml(p,key)).join("")}</div>`:"";
+  box.innerHTML=grp("밥집",f,"food")+grp("카페 · 베이커리",c,"cafe")||`<div class="empty">조건에 맞는 곳이 없어요.</div>`;
+ } else {
+  box.innerHTML=list.length?`<div class="card-grid">${list.map(p=>cardHtml(p,key)).join("")}</div>`:`<div class="empty">조건에 맞는 곳이 없어요.</div>`;
+ }
+ box.querySelectorAll(".card").forEach(c=>c.onclick=()=>openPlace(c.dataset.key));
+ // reflect selection
+ if(curKey){ box.querySelectorAll(".card").forEach(c=>c.classList.toggle("sel",c.dataset.key===curKey)); }
+}
+
+/* build sections */
+const main=$("main");
+SECTIONS.forEach(s=>{ main.appendChild(buildSection(s)); });
+SECTIONS.forEach(s=>{ buildFilters(s); drawMap(s); render(s.key); $("q-"+s.key).oninput=e=>{state[s.key].q=e.target.value.trim();render(s.key);}; });
+document.querySelectorAll(".mapzoom button").forEach(b=>b.onclick=()=>{const k=b.dataset.k;zoomLevel[k]=b.dataset.z==="in"?Math.min(zoomLevel[k]*1.35,3):Math.max(zoomLevel[k]/1.35,1);const svg=$("map-"+k);svg.style.width=(100*zoomLevel[k])+"%";});
+
+/* DOORS (cover) */
+const doors=$("doors");
+SECTIONS.forEach((s,i)=>{
+ const b=document.createElement("button");
+ b.className="door"; b.setAttribute("data-theme",s.key);
+ b.innerHTML=`<div class="dillo">${s.illo}</div><div class="dnum">0${i+1}</div><div class="dname">${esc(s.title)}</div><div class="dconcept">${esc(s.concept)}</div><div class="dcount">${s.key==="curation"?("식당 "+C_FOOD.length+"곳 · 카페 "+C_CAFE.length+"곳"):(s.data.length+"곳")} <span class="darr">→</span></div>`;
+ b.onclick=()=>document.getElementById("sec-"+s.key).scrollIntoView({behavior:"smooth",block:"start"});
+ doors.appendChild(b);
+});
+
+/* ---- DETAIL SHEET + SOCIAL (db/user) ---- */
+let DB=null,USER=null,UID=null,CANWRITE=true,SOCIAL_READY=false;
+const findPlace=k=>{for(const s of SECTIONS){const p=s.data.find(x=>keyOf(x)===k);if(p)return p;}return null;};
+const HEART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>';
+const HEARTF='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>';
+
+(async()=>{
+ const C=(window.claude&&typeof window.claude.use==="function")?window.claude:null;
+ if(!C) return;
+ try{ DB=await C.use("db"); }catch(e){ DB=null; }
+ try{ USER=await C.use("user"); }catch(e){ USER=null; }
+ if(USER){ try{ UID=await USER.id(); }catch(e){ UID=null; } try{ const cw=await USER.can("data.write"); CANWRITE=(cw!==false);}catch(e){ CANWRITE=true; } }
+ SOCIAL_READY=true;
+ if(curPlace) renderSocial(curPlace);
+})();
+
+function openPlace(k){
+ curKey=k; curPlace=findPlace(k); if(!curPlace) return;
+ const p=curPlace, s=SMETA[p.tab];
+ $("sheet").setAttribute("data-theme",p.tab);
+  $("shCat").textContent = p.tab==="curation"?(p.cat==="food"?"밥집":"카페 · 베이커리"):(p.tab==="night"?"마곡의 밤":"세상의 모든 체인");
+ $("shName").textContent=p.name;
+ $("shDesc").textContent=p.desc;
+ let _ff=`<div class="frow"><span class="fk">위치</span><span class="fv">${esc(p.zone)}</span></div>`;
+ if(p.price) _ff+=`<div class="frow"><span class="fk">가격대</span><span class="fv">${esc(p.price)}</span></div>`;
+ if(p.menu) _ff+=`<div class="frow"><span class="fk">주메뉴</span><span class="fv">${esc(p.menu)}</span></div>`;
+ $("shFields").innerHTML=_ff;
+ const q=encodeURIComponent(p.name+" 마곡");
+ $("shLinks").innerHTML=`<a class="linkbtn" target="_blank" rel="noopener" href="https://map.kakao.com/?q=${q}">카카오맵</a><a class="linkbtn" target="_blank" rel="noopener" href="https://map.naver.com/p/search/${q}">네이버 지도</a>`;
+ renderSocial(p);
+ $("overlay").classList.add("on"); $("sheet").classList.add("on");
+ // sync card highlight
+ document.querySelectorAll(".card").forEach(c=>c.classList.toggle("sel",c.dataset.key===k));
+ $("map-"+p.tab).querySelectorAll(".pin").forEach(g=>g.classList.toggle("sel",g.dataset.key===k));
+}
+function clearSubs(){ curUnsub.forEach(u=>{try{u();}catch(e){}}); curUnsub=[]; }
+function closeSheet(){ clearSubs(); $("overlay").classList.remove("on"); $("sheet").classList.remove("on");
+ if(curKey){document.querySelectorAll(".pin.sel,.card.sel").forEach(el=>el.classList.remove("sel"));}
+ curKey=null; curPlace=null; }
+$("shClose").onclick=closeSheet; $("overlay").onclick=closeSheet;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
+$("topBtn").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+
+function fmtTime(ts){ const d=new Date(ts); if(isNaN(d)) return ""; const p=n=>String(n).padStart(2,"0"); return `${d.getFullYear().toString().slice(2)}.${p(d.getMonth()+1)}.${p(d.getDate())}`; }
+
+function renderSocial(p){
+ clearSubs();
+ const box=$("shSocial"); const pid=keyOf(p);
+ box.innerHTML=`<button class="likebtn" id="likeBtn" disabled>${HEART}<span id="likeCount">0</span></button>
+   <div class="cm-head">댓글</div><div class="cm-list" id="cmList"><div class="cm-empty">불러오는 중…</div></div>
+   <div id="cmCompose"></div>`;
+ if(!SOCIAL_READY){ $("cmList").innerHTML='<div class="cm-empty">불러오는 중…</div>'; return; }
+ if(!DB){
+   $("likeBtn").style.display="none";
+   $("cmList").innerHTML='<div class="cm-empty">아직 댓글이 없어요.</div>';
+   $("cmCompose").innerHTML='<div class="cm-note">댓글·좋아요는 로그인한 상태에서 이용할 수 있어요.</div>';
+   return;
+ }
+ // LIKES
+ const likeBtn=$("likeBtn"), likeCount=$("likeCount");
+ const canLike = !!UID && CANWRITE;
+ let liked=false;
+ try{
+  const unL=DB.collection("likes").where("place","==",pid).onSnapshot(snap=>{
+    likeCount.textContent=snap.size;
+    liked = UID ? snap.docs.some(d=>{const v=d.data();return v&&v.uid===UID;}) : false;
+    likeBtn.classList.toggle("liked",liked);
+    likeBtn.querySelector("svg").outerHTML = liked?HEARTF:HEART;
+  }, e=>{});
+  curUnsub.push(unL);
+ }catch(e){}
+ if(canLike){
+  likeBtn.disabled=false;
+  likeBtn.onclick=async()=>{
+   if(!UID)return; const id=pid+"__"+UID;
+   try{ if(liked){ await DB.collection("likes").doc(id).delete(); } else { await DB.collection("likes").doc(id).set({place:pid,uid:UID,ts:Date.now()}); } }catch(e){}
+  };
+ } else { likeBtn.disabled=true; likeBtn.title="좋아요는 로그인·권한이 필요해요"; }
+ // COMMENTS
+ try{
+  const unC=DB.collection("comments").where("place","==",pid).orderBy("ts","asc").onSnapshot(snap=>{
+    const list=$("cmList"); list.innerHTML="";
+    if(snap.empty){ list.innerHTML='<div class="cm-empty">첫 댓글을 남겨보세요.</div>'; return; }
+    snap.docs.forEach(d=>{ const v=d.data()||{};
+      const el=document.createElement("div"); el.className="cm";
+      const h=document.createElement("div"); const nk=document.createElement("span"); nk.className="cm-nick"; nk.textContent=v.nick||"익명";
+      const tm=document.createElement("span"); tm.className="cm-time"; tm.textContent=fmtTime(v.ts);
+      h.appendChild(nk); h.appendChild(tm);
+      const tx=document.createElement("div"); tx.className="cm-text"; tx.textContent=v.text||"";
+      el.appendChild(h); el.appendChild(tx); list.appendChild(el);
+    });
+  }, e=>{ $("cmList").innerHTML='<div class="cm-empty">댓글을 불러오지 못했어요.</div>'; });
+  curUnsub.push(unC);
+ }catch(e){ $("cmList").innerHTML='<div class="cm-empty">댓글을 불러오지 못했어요.</div>'; }
+ // COMPOSER
+ const comp=$("cmCompose");
+ if(CANWRITE){
+  comp.innerHTML=`<div class="cm-compose"><div class="cm-row"><input id="cmNick" maxlength="16" placeholder="닉네임"><button class="cm-submit" id="cmSend">등록</button></div><textarea id="cmText" maxlength="400" placeholder="이 집 어때요? 한마디 남겨주세요"></textarea></div>`;
+  try{ $("cmNick").value=localStorage.getItem("mg_nick")||""; }catch(e){}
+  $("cmSend").onclick=async()=>{
+   const nick=($("cmNick").value||"").trim()||"익명"; const text=($("cmText").value||"").trim();
+   if(!text) return;
+   try{ localStorage.setItem("mg_nick",nick); }catch(e){}
+   const btn=$("cmSend"); btn.disabled=true;
+   try{ await DB.collection("comments").add({place:pid,nick:nick.slice(0,16),text:text.slice(0,400),ts:Date.now()}); $("cmText").value=""; }
+   catch(e){ comp.insertAdjacentHTML("beforeend",'<div class="cm-note">등록에 실패했어요. 권한을 확인해주세요.</div>'); }
+   btn.disabled=false;
+  };
+ } else {
+  comp.innerHTML='<div class="cm-note">이 아티팩트에서 쓰기 권한이 없어 댓글을 남길 수 없어요. 읽기는 가능합니다.</div>';
+ }
+}
+</script>
+</body>
+</html>
