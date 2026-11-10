@@ -183,6 +183,12 @@ footer{max-width:1040px;margin:0 auto;padding:30px 18px calc(var(--safe-b) + 40p
 .cm-submit{flex:none;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:10px;padding:10px 16px;font-size:13.5px;font-weight:600}
 .cm-submit[disabled]{opacity:.5;cursor:default}
 .cm-note{font-size:12.5px;color:var(--muted);line-height:1.55;margin-top:8px}
+.cm-me{font-size:12px;color:var(--muted)}
+.cm-me b{color:var(--text);font-weight:600}
+.cm-count{color:var(--accent);margin-left:2px}
+.cm-row{justify-content:space-between}
+.cm-len{font-size:11.5px;color:var(--muted)}
+.tag.likes{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 42%,var(--card-line))}
 
 .doors{max-width:1040px;margin:6px auto 0;padding:0 18px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:860px){.doors{grid-template-columns:1fr}}
@@ -429,7 +435,7 @@ function drawMap(s){
 }
 function cardHtml(p,key){
  const bc=key==="curation"?p.cat:"single";
- return `<button class="card" data-key="${keyOf(p)}"><span class="badge ${bc}">${p.n}</span><span class="card-body"><span class="card-name">${esc(p.name)}</span><span class="card-desc">${esc(p.desc)}</span><span class="tagrow"><span class="tag">${esc(p.zone)}</span>${p.reserve?'<span class="tag res">예약 권장</span>':''}${p.price?'<span class="tag">'+esc(p.price)+'</span>':''}</span></span></button>`;
+ return `<button class="card" data-key="${keyOf(p)}"><span class="badge ${bc}">${p.n}</span><span class="card-body"><span class="card-name">${esc(p.name)}</span><span class="card-desc">${esc(p.desc)}</span><span class="tagrow"><span class="tag">${esc(p.zone)}</span>${p.reserve?'<span class="tag res">예약 권장</span>':''}${p.price?'<span class="tag">'+esc(p.price)+'</span>':''}${heartTag(keyOf(p))}</span></span></button>`;
 }
 function render(key){
  const s=SMETA[key], list=s.data.filter(p=>matches(p,key));
@@ -453,6 +459,37 @@ function render(key){
  if(curKey){ box.querySelectorAll(".card").forEach(c=>c.classList.toggle("sel",c.dataset.key===curKey)); }
 }
 
+/* ---- SOCIAL STORE ----
+   프로토타입: 이 브라우저(localStorage)에만 저장한다.
+   데이터 모양은 나중의 저장소 파일 data/social.json과 같게 둔다:
+   { likes:{ <장소키>:{ <익명ID>:ts } }, comments:{ <장소키>:[ {id,anon,name,text,ts} ] } }
+   최종안(Cloudflare Worker 중계 → 저장소 JSON)으로 바꿀 때는 아래 load/save와
+   toggleLike/addComment 안의 저장 부분만 fetch 호출로 바꾸면 된다. 화면 코드는 그대로 둔다. */
+const Social=(()=>{
+ const KEY="mg_social_v1", AKEY="mg_anon";
+ const ADJ=["배고픈","든든한","느긋한","부지런한","출출한","단골","새내기","미식가","점심파","산책하는"];
+ const FOOD=["비빔밥","라떼","김밥","떡볶이","칼국수","크루아상","돈가스","쌀국수","마라탕","순두부","베이글","짜장면","초밥","카레","만두","아메리카노"];
+ let mem={likes:{},comments:{}}, anon=null, subs=[];
+ const read=()=>{ try{ const v=JSON.parse(localStorage.getItem(KEY)||"null"); if(v&&v.likes&&v.comments) mem=v; }catch(e){} };
+ const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(mem)); }catch(e){} subs.forEach(f=>{try{f();}catch(e){}}); };
+ const rid=()=>(crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));
+ try{ anon=localStorage.getItem(AKEY); if(!anon){ anon=rid(); localStorage.setItem(AKEY,anon); } }catch(e){ anon=rid(); }
+ const nameOf=id=>{ let h=0; for(const ch of String(id)) h=(h*31+ch.charCodeAt(0))>>>0; return ADJ[h%ADJ.length]+" "+FOOD[(h>>>8)%FOOD.length]; };
+ read();
+ window.addEventListener("storage",e=>{ if(e.key===KEY){ read(); subs.forEach(f=>{try{f();}catch(e){}}); } });
+ return {
+  myName:()=>nameOf(anon),
+  likeCount:pid=>Object.keys(mem.likes[pid]||{}).length,
+  liked:pid=>!!(mem.likes[pid]&&mem.likes[pid][anon]),
+  async toggleLike(pid){ const m=mem.likes[pid]||(mem.likes[pid]={}); if(m[anon]) delete m[anon]; else m[anon]=Date.now(); if(!Object.keys(m).length) delete mem.likes[pid]; save(); },
+  comments:pid=>(mem.comments[pid]||[]).slice().sort((a,b)=>a.ts-b.ts),
+  async addComment(pid,text){ const t=String(text||"").trim().slice(0,400); if(!t) return; (mem.comments[pid]||(mem.comments[pid]=[])).push({id:rid(),anon,name:nameOf(anon),text:t,ts:Date.now()}); save(); },
+  onChange(f){ subs.push(f); return ()=>{ subs=subs.filter(x=>x!==f); }; }
+ };
+})();
+function heartTag(pid){ const n=Social.likeCount(pid); return n?`<span class="tag likes" aria-label="좋아요 ${n}개">♥ ${n}</span>`:""; }
+function refreshCardHearts(){ document.querySelectorAll(".card").forEach(c=>{ const row=c.querySelector(".tagrow"); if(!row) return; const old=row.querySelector(".tag.likes"); if(old) old.remove(); const h=heartTag(c.dataset.key); if(h) row.insertAdjacentHTML("beforeend",h); }); }
+Social.onChange(()=>{ refreshCardHearts(); if(curPlace&&curSocialPid===keyOf(curPlace)) paintSocial(curSocialPid); });
 /* build sections */
 const main=$("main");
 SECTIONS.forEach(s=>{ main.appendChild(buildSection(s)); });
@@ -508,20 +545,11 @@ SECTIONS.forEach((s,i)=>{
 });
 
 /* ---- DETAIL SHEET + SOCIAL (db/user) ---- */
-let DB=null,USER=null,UID=null,CANWRITE=true,SOCIAL_READY=false;
+let curSocialPid=null;
 const findPlace=k=>{for(const s of SECTIONS){const p=s.data.find(x=>keyOf(x)===k);if(p)return p;}return null;};
 const HEART='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>';
 const HEARTF='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/></svg>';
 
-(async()=>{
- const C=(window.claude&&typeof window.claude.use==="function")?window.claude:null;
- if(!C) return;
- try{ DB=await C.use("db"); }catch(e){ DB=null; }
- try{ USER=await C.use("user"); }catch(e){ USER=null; }
- if(USER){ try{ UID=await USER.id(); }catch(e){ UID=null; } try{ const cw=await USER.can("data.write"); CANWRITE=(cw!==false);}catch(e){ CANWRITE=true; } }
- SOCIAL_READY=true;
- if(curPlace) renderSocial(curPlace);
-})();
 
 function openPlace(k){
  curKey=k; curPlace=findPlace(k); if(!curPlace) return;
@@ -554,70 +582,39 @@ function fmtTime(ts){ const d=new Date(ts); if(isNaN(d)) return ""; const p=n=>S
 
 function renderSocial(p){
  clearSubs();
- const box=$("shSocial"); const pid=keyOf(p);
- box.innerHTML=`<button class="likebtn" id="likeBtn" disabled>${HEART}<span id="likeCount">0</span></button>
-   <div class="cm-head">댓글</div><div class="cm-list" id="cmList"><div class="cm-empty">불러오는 중…</div></div>
-   <div id="cmCompose"></div>`;
- if(!SOCIAL_READY){ $("cmList").innerHTML='<div class="cm-empty">불러오는 중…</div>'; return; }
- if(!DB){
-   $("likeBtn").style.display="none";
-   $("cmList").innerHTML='<div class="cm-empty">아직 댓글이 없어요.</div>';
-   $("cmCompose").innerHTML='<div class="cm-note">댓글·좋아요는 로그인한 상태에서 이용할 수 있어요.</div>';
-   return;
- }
- // LIKES
- const likeBtn=$("likeBtn"), likeCount=$("likeCount");
- const canLike = !!UID && CANWRITE;
- let liked=false;
- try{
-  const unL=DB.collection("likes").where("place","==",pid).onSnapshot(snap=>{
-    likeCount.textContent=snap.size;
-    liked = UID ? snap.docs.some(d=>{const v=d.data();return v&&v.uid===UID;}) : false;
-    likeBtn.classList.toggle("liked",liked);
-    likeBtn.querySelector("svg").outerHTML = liked?HEARTF:HEART;
-  }, e=>{});
-  curUnsub.push(unL);
- }catch(e){}
- if(canLike){
-  likeBtn.disabled=false;
-  likeBtn.onclick=async()=>{
-   if(!UID)return; const id=pid+"__"+UID;
-   try{ if(liked){ await DB.collection("likes").doc(id).delete(); } else { await DB.collection("likes").doc(id).set({place:pid,uid:UID,ts:Date.now()}); } }catch(e){}
-  };
- } else { likeBtn.disabled=true; likeBtn.title="좋아요는 로그인·권한이 필요해요"; }
- // COMMENTS
- try{
-  const unC=DB.collection("comments").where("place","==",pid).orderBy("ts","asc").onSnapshot(snap=>{
-    const list=$("cmList"); list.innerHTML="";
-    if(snap.empty){ list.innerHTML='<div class="cm-empty">첫 댓글을 남겨보세요.</div>'; return; }
-    snap.docs.forEach(d=>{ const v=d.data()||{};
-      const el=document.createElement("div"); el.className="cm";
-      const h=document.createElement("div"); const nk=document.createElement("span"); nk.className="cm-nick"; nk.textContent=v.nick||"익명";
-      const tm=document.createElement("span"); tm.className="cm-time"; tm.textContent=fmtTime(v.ts);
-      h.appendChild(nk); h.appendChild(tm);
-      const tx=document.createElement("div"); tx.className="cm-text"; tx.textContent=v.text||"";
-      el.appendChild(h); el.appendChild(tx); list.appendChild(el);
-    });
-  }, e=>{ $("cmList").innerHTML='<div class="cm-empty">댓글을 불러오지 못했어요.</div>'; });
-  curUnsub.push(unC);
- }catch(e){ $("cmList").innerHTML='<div class="cm-empty">댓글을 불러오지 못했어요.</div>'; }
- // COMPOSER
- const comp=$("cmCompose");
- if(CANWRITE){
-  comp.innerHTML=`<div class="cm-compose"><div class="cm-row"><input id="cmNick" maxlength="16" placeholder="닉네임"><button class="cm-submit" id="cmSend">등록</button></div><textarea id="cmText" maxlength="400" placeholder="이 집 어때요? 한마디 남겨주세요"></textarea></div>`;
-  try{ $("cmNick").value=localStorage.getItem("mg_nick")||""; }catch(e){}
-  $("cmSend").onclick=async()=>{
-   const nick=($("cmNick").value||"").trim()||"익명"; const text=($("cmText").value||"").trim();
-   if(!text) return;
-   try{ localStorage.setItem("mg_nick",nick); }catch(e){}
-   const btn=$("cmSend"); btn.disabled=true;
-   try{ await DB.collection("comments").add({place:pid,nick:nick.slice(0,16),text:text.slice(0,400),ts:Date.now()}); $("cmText").value=""; }
-   catch(e){ comp.insertAdjacentHTML("beforeend",'<div class="cm-note">등록에 실패했어요. 권한을 확인해주세요.</div>'); }
-   btn.disabled=false;
-  };
- } else {
-  comp.innerHTML='<div class="cm-note">이 아티팩트에서 쓰기 권한이 없어 댓글을 남길 수 없어요. 읽기는 가능합니다.</div>';
- }
+ const box=$("shSocial"); const pid=keyOf(p); curSocialPid=pid;
+ box.innerHTML=`<button class="likebtn" id="likeBtn" aria-pressed="false">${HEART}<span id="likeCount">0</span></button>
+   <div class="cm-head">댓글 <span class="cm-count" id="cmCount"></span></div><div class="cm-list" id="cmList"></div>
+   <div class="cm-compose"><div class="cm-me">나는 <b id="cmMe"></b> · 이름은 자동으로 붙어요</div>
+     <textarea id="cmText" maxlength="400" placeholder="이 집 어때요? 한마디 남겨주세요 (이름·연락처 등 개인정보는 쓰지 말아 주세요)"></textarea>
+     <div class="cm-row"><span class="cm-len" id="cmLen">0 / 400</span><button class="cm-submit" id="cmSend" disabled>등록</button></div></div>
+   <div class="cm-note">프로토타입이에요. 좋아요·댓글은 지금 이 브라우저에만 저장되고 다른 사람에게는 보이지 않아요.</div>`;
+ $("cmMe").textContent=Social.myName();
+ $("likeBtn").onclick=()=>Social.toggleLike(pid);
+ const ta=$("cmText"), send=$("cmSend");
+ ta.oninput=()=>{ $("cmLen").textContent=ta.value.length+" / 400"; send.disabled=!ta.value.trim(); };
+ send.onclick=async()=>{ const t=ta.value.trim(); if(!t) return; send.disabled=true; await Social.addComment(pid,t); ta.value=""; ta.oninput(); const l=$("cmList"); l.lastElementChild&&l.lastElementChild.scrollIntoView({block:"nearest",behavior:"smooth"}); };
+ ta.onkeydown=e=>{ if(e.key==="Enter"&&(e.ctrlKey||e.metaKey)){ e.preventDefault(); send.click(); } };
+ paintSocial(pid);
+}
+function paintSocial(pid){
+ const lb=$("likeBtn"); if(!lb) return;
+ const liked=Social.liked(pid);
+ lb.classList.toggle("liked",liked); lb.setAttribute("aria-pressed",String(liked));
+ lb.setAttribute("aria-label",liked?"좋아요 취소":"좋아요");
+ lb.querySelector("svg").outerHTML=liked?HEARTF:HEART;
+ $("likeCount").textContent=Social.likeCount(pid);
+ const list=$("cmList"), arr=Social.comments(pid); list.innerHTML="";
+ $("cmCount").textContent=arr.length?String(arr.length):"";
+ if(!arr.length){ list.innerHTML='<div class="cm-empty">첫 댓글을 남겨보세요.</div>'; return; }
+ arr.forEach(v=>{
+  const el=document.createElement("div"); el.className="cm";
+  const h=document.createElement("div"); const nk=document.createElement("span"); nk.className="cm-nick"; nk.textContent=v.name||"익명";
+  const tm=document.createElement("span"); tm.className="cm-time"; tm.textContent=fmtTime(v.ts);
+  h.appendChild(nk); h.appendChild(tm);
+  const tx=document.createElement("div"); tx.className="cm-text"; tx.textContent=v.text||"";
+  el.appendChild(h); el.appendChild(tx); list.appendChild(el);
+ });
 }
 </script>
 </body>
