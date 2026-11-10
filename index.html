@@ -472,7 +472,8 @@ const Social=(()=>{
  const KEY="mg_social_v1", AKEY="mg_anon";
  const ADJ=["배고픈","든든한","느긋한","부지런한","출출한","단골","새내기","미식가","점심파","산책하는"];
  const FOOD=["비빔밥","라떼","김밥","떡볶이","칼국수","크루아상","돈가스","쌀국수","마라탕","순두부","베이글","짜장면","초밥","카레","만두","아메리카노"];
- let mem={likes:{},comments:{}}, anon=null, subs=[];
+ let mem={likes:{},comments:{}}, anon=null, subs=[], persist=false;
+ try{ localStorage.setItem("mg_t","1"); localStorage.removeItem("mg_t"); persist=true; }catch(e){ persist=false; }
  const read=()=>{ try{ const v=JSON.parse(localStorage.getItem(KEY)||"null"); if(v&&v.likes&&v.comments) mem=v; }catch(e){} };
  const save=()=>{ try{ localStorage.setItem(KEY,JSON.stringify(mem)); }catch(e){} subs.forEach(f=>{try{f();}catch(e){}}); };
  const rid=()=>(crypto&&crypto.randomUUID)?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2));
@@ -482,6 +483,7 @@ const Social=(()=>{
  window.addEventListener("storage",e=>{ if(e.key===KEY){ read(); subs.forEach(f=>{try{f();}catch(e){}}); } });
  return {
   myName:()=>nameOf(anon),
+  canPersist:()=>persist,
   likeCount:pid=>Object.keys(mem.likes[pid]||{}).length,
   liked:pid=>!!(mem.likes[pid]&&mem.likes[pid][anon]),
   async toggleLike(pid){ const m=mem.likes[pid]||(mem.likes[pid]={}); if(m[anon]) delete m[anon]; else m[anon]=Date.now(); if(!Object.keys(m).length) delete mem.likes[pid]; save(); },
@@ -593,6 +595,7 @@ function renderSocial(p){
      <div class="cm-row"><span class="cm-len" id="cmLen">0 / 400</span><button class="cm-submit" id="cmSend" disabled>등록</button></div></div>
    <div class="cm-note">프로토타입이에요. 좋아요·댓글은 지금 이 브라우저에만 저장되고 다른 사람에게는 보이지 않아요.</div>`;
  $("cmMe").textContent=Social.myName();
+ if(!Social.canPersist()) box.insertAdjacentHTML("beforeend",'<div class="cm-note">이 브라우저는 저장이 막혀 있어요(개인정보 보호 모드·쿠키 차단 등). 누르고 쓸 수는 있지만 새로고침하면 사라져요.</div>');
  $("likeBtn").addEventListener("click",async e=>{ e.preventDefault(); e.stopPropagation(); try{ await Social.toggleLike(pid); }catch(err){} paintSocial(pid); });
  const ta=$("cmText"), send=$("cmSend");
  ta.oninput=()=>{ $("cmLen").textContent=ta.value.length+" / 400"; send.disabled=!ta.value.trim(); };
