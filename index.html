@@ -165,7 +165,10 @@ footer{max-width:1040px;margin:0 auto;padding:30px 18px calc(var(--safe-b) + 40p
 .likebtn{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--card-line);background:transparent;color:var(--text);border-radius:999px;padding:8px 15px;font-size:13px;font-weight:600;transition:all .16s}
 .likebtn:hover{border-color:var(--accent)}
 .likebtn.liked{background:color-mix(in srgb,var(--accent) 12%,var(--card));border-color:var(--accent);color:var(--accent)}
-.likebtn svg{width:16px;height:16px}
+.likebtn{touch-action:manipulation;-webkit-tap-highlight-color:transparent;position:relative;z-index:1}
+.likebtn svg,.likebtn span{pointer-events:none}
+.lk-ico{display:inline-flex}
+.likebtn svg{width:16px;height:16px;display:block}
 .likebtn[disabled]{opacity:.55;cursor:default}
 .cm-head{font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted);margin:18px 0 10px;text-transform:uppercase}
 .cm-list{display:flex;flex-direction:column;gap:10px}
@@ -583,14 +586,14 @@ function fmtTime(ts){ const d=new Date(ts); if(isNaN(d)) return ""; const p=n=>S
 function renderSocial(p){
  clearSubs();
  const box=$("shSocial"); const pid=keyOf(p); curSocialPid=pid;
- box.innerHTML=`<button class="likebtn" id="likeBtn" aria-pressed="false">${HEART}<span id="likeCount">0</span></button>
+ box.innerHTML=`<button type="button" class="likebtn" id="likeBtn" aria-pressed="false"><span class="lk-ico" id="likeIco">${HEART}</span><span id="likeCount">0</span></button>
    <div class="cm-head">댓글 <span class="cm-count" id="cmCount"></span></div><div class="cm-list" id="cmList"></div>
    <div class="cm-compose"><div class="cm-me">나는 <b id="cmMe"></b> · 이름은 자동으로 붙어요</div>
      <textarea id="cmText" maxlength="400" placeholder="이 집 어때요? 한마디 남겨주세요 (이름·연락처 등 개인정보는 쓰지 말아 주세요)"></textarea>
      <div class="cm-row"><span class="cm-len" id="cmLen">0 / 400</span><button class="cm-submit" id="cmSend" disabled>등록</button></div></div>
    <div class="cm-note">프로토타입이에요. 좋아요·댓글은 지금 이 브라우저에만 저장되고 다른 사람에게는 보이지 않아요.</div>`;
  $("cmMe").textContent=Social.myName();
- $("likeBtn").onclick=()=>Social.toggleLike(pid);
+ $("likeBtn").addEventListener("click",async e=>{ e.preventDefault(); e.stopPropagation(); try{ await Social.toggleLike(pid); }catch(err){} paintSocial(pid); });
  const ta=$("cmText"), send=$("cmSend");
  ta.oninput=()=>{ $("cmLen").textContent=ta.value.length+" / 400"; send.disabled=!ta.value.trim(); };
  send.onclick=async()=>{ const t=ta.value.trim(); if(!t) return; send.disabled=true; await Social.addComment(pid,t); ta.value=""; ta.oninput(); const l=$("cmList"); l.lastElementChild&&l.lastElementChild.scrollIntoView({block:"nearest",behavior:"smooth"}); };
@@ -600,10 +603,10 @@ function renderSocial(p){
 function paintSocial(pid){
  const lb=$("likeBtn"); if(!lb) return;
  const liked=Social.liked(pid);
+ $("likeCount").textContent=Social.likeCount(pid);
  lb.classList.toggle("liked",liked); lb.setAttribute("aria-pressed",String(liked));
  lb.setAttribute("aria-label",liked?"좋아요 취소":"좋아요");
- lb.querySelector("svg").outerHTML=liked?HEARTF:HEART;
- $("likeCount").textContent=Social.likeCount(pid);
+ const ico=$("likeIco"); if(ico) ico.innerHTML=liked?HEARTF:HEART;
  const list=$("cmList"), arr=Social.comments(pid); list.innerHTML="";
  $("cmCount").textContent=arr.length?String(arr.length):"";
  if(!arr.length){ list.innerHTML='<div class="cm-empty">첫 댓글을 남겨보세요.</div>'; return; }
